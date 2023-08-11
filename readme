@@ -1,0 +1,4 @@
+This repository hosts my internship project—an interactive Human-Machine Interface (HMI) created 
+using MATLAB App Designer. The project's focus is on deploying an interface that 
+allows users to modify model parameters, simulate the model iteratively, and visually track key 
+metrics like electric parking state, voltage, current, and torque force on a graph.
