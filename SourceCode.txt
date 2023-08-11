@@ -1,0 +1,2178 @@
+classdef HMI < matlab.apps.AppBase
+
+    % Properties that correspond to app components
+    properties (Access = public)
+        UIFigure                       matlab.ui.Figure
+        SlpEditField_4                 matlab.ui.control.NumericEditField
+        Panel                          matlab.ui.container.Panel
+        Image                          matlab.ui.control.Image
+        Gauge                          matlab.ui.control.Gauge
+        Gauge2                         matlab.ui.control.Gauge
+        Label                          matlab.ui.control.Label
+        Lamp                           matlab.ui.control.Lamp
+        Lamp_3Label                    matlab.ui.control.Label
+        Lamp_3                         matlab.ui.control.Lamp
+        Lamp_2Label                    matlab.ui.control.Label
+        Lamp_2                         matlab.ui.control.Lamp
+        Lamp_7                         matlab.ui.control.Lamp
+        PButton                        matlab.ui.control.Button
+        PressurebarKnobLabel           matlab.ui.control.Label
+        PressurebarKnob                matlab.ui.control.Knob
+        SlopeEditFieldLabel            matlab.ui.control.Label
+        SlopeEditField                 matlab.ui.control.NumericEditField
+        VoltageEditFieldLabel          matlab.ui.control.Label
+        VoltageEditField               matlab.ui.control.NumericEditField
+        ACT_INITREditFieldLabel        matlab.ui.control.Label
+        ACT_INITREditField             matlab.ui.control.NumericEditField
+        ACT_INITLEditFieldLabel        matlab.ui.control.Label
+        ACT_INITLEditField             matlab.ui.control.NumericEditField
+        Lamp_10Label                   matlab.ui.control.Label
+        Lamp_10                        matlab.ui.control.Lamp
+        Lamp_11Label                   matlab.ui.control.Label
+        Lamp_11                        matlab.ui.control.Lamp
+        SimTimeEditFieldLabel          matlab.ui.control.Label
+        SimTimeEditField               matlab.ui.control.NumericEditField
+        SIButton                       matlab.ui.control.StateButton
+        Knob                           matlab.ui.control.Knob
+        Accelerationms2Label           matlab.ui.control.Label
+        ReleaseButton                  matlab.ui.control.StateButton
+        ApplyButton                    matlab.ui.control.Button
+        FaultySignalsLabel             matlab.ui.control.Label
+        Label_26                       matlab.ui.control.Label
+        Lamp_12                        matlab.ui.control.Lamp
+        Lamp_15Label                   matlab.ui.control.Label
+        Lamp_15                        matlab.ui.control.Lamp
+        Lamp_16Label                   matlab.ui.control.Label
+        Lamp_16                        matlab.ui.control.Lamp
+        Lamp_17Label                   matlab.ui.control.Label
+        Lamp_17                        matlab.ui.control.Lamp
+        Lamp_18Label                   matlab.ui.control.Label
+        Lamp_18                        matlab.ui.control.Lamp
+        Lamp_19Label                   matlab.ui.control.Label
+        Lamp_19                        matlab.ui.control.Lamp
+        Lamp_14Label                   matlab.ui.control.Label
+        Lamp_14                        matlab.ui.control.Lamp
+        Lamp_13Label                   matlab.ui.control.Label
+        Lamp_13                        matlab.ui.control.Lamp
+        Lamp_20Label                   matlab.ui.control.Label
+        Lamp_20                        matlab.ui.control.Lamp
+        Label_27                       matlab.ui.control.Label
+        Lamp_21                        matlab.ui.control.Lamp
+        Label_28                       matlab.ui.control.Label
+        Lamp_22                        matlab.ui.control.Lamp
+        Label_32                       matlab.ui.control.Label
+        Lamp_23                        matlab.ui.control.Lamp
+        Label_33                       matlab.ui.control.Label
+        Lamp_24                        matlab.ui.control.Lamp
+        Label_34                       matlab.ui.control.Label
+        Lamp_25                        matlab.ui.control.Lamp
+        Label_36                       matlab.ui.control.Label
+        Lamp_27                        matlab.ui.control.Lamp
+        Label_37                       matlab.ui.control.Label
+        Lamp_28                        matlab.ui.control.Lamp
+        Label_38                       matlab.ui.control.Label
+        Lamp_29                        matlab.ui.control.Lamp
+        Label_35                       matlab.ui.control.Label
+        Lamp_26                        matlab.ui.control.Lamp
+        Label_29                       matlab.ui.control.Label
+        Lamp_30                        matlab.ui.control.Lamp
+        Lamp_35Label                   matlab.ui.control.Label
+        Lamp_35                        matlab.ui.control.Lamp
+        Lamp_34Label                   matlab.ui.control.Label
+        Lamp_34                        matlab.ui.control.Lamp
+        Lamp_32Label                   matlab.ui.control.Label
+        Lamp_32                        matlab.ui.control.Lamp
+        Lamp_31Label                   matlab.ui.control.Label
+        Lamp_31                        matlab.ui.control.Lamp
+        Lamp_36Label                   matlab.ui.control.Label
+        Lamp_36                        matlab.ui.control.Lamp
+        Lamp_37Label                   matlab.ui.control.Label
+        Lamp_37                        matlab.ui.control.Lamp
+        Lamp_38Label                   matlab.ui.control.Label
+        Lamp_38                        matlab.ui.control.Lamp
+        Lamp_33Label                   matlab.ui.control.Label
+        Lamp_33                        matlab.ui.control.Lamp
+        Label_30                       matlab.ui.control.Label
+        Lamp_39                        matlab.ui.control.Lamp
+        Lamp_46Label                   matlab.ui.control.Label
+        Lamp_46                        matlab.ui.control.Lamp
+        Lamp_47Label                   matlab.ui.control.Label
+        Lamp_47                        matlab.ui.control.Lamp
+        Lamp_45Label                   matlab.ui.control.Label
+        Lamp_45                        matlab.ui.control.Lamp
+        Lamp_40Label                   matlab.ui.control.Label
+        Lamp_40                        matlab.ui.control.Lamp
+        Lamp_41Label                   matlab.ui.control.Label
+        Lamp_41                        matlab.ui.control.Lamp
+        Lamp_42Label                   matlab.ui.control.Label
+        Lamp_42                        matlab.ui.control.Lamp
+        Label_31                       matlab.ui.control.Label
+        Lamp_43                        matlab.ui.control.Lamp
+        Lamp_44Label                   matlab.ui.control.Label
+        Lamp_44                        matlab.ui.control.Lamp
+        Image2                         matlab.ui.control.Image
+        HstAvail_LEditFieldLabel       matlab.ui.control.Label
+        HstAvail_LEditField            matlab.ui.control.NumericEditField
+        HstAvail_REditFieldLabel       matlab.ui.control.Label
+        HstAvail_REditField            matlab.ui.control.NumericEditField
+        KMOTEditFieldLabel             matlab.ui.control.Label
+        KMOTEditField                  matlab.ui.control.NumericEditField
+        PBCStateLabel                  matlab.ui.control.Label
+        Switch_3                       matlab.ui.control.ToggleSwitch
+        PlotGraphLabel                 matlab.ui.control.Label
+        ResetButton                    matlab.ui.control.Button
+        Switch_4                       matlab.ui.control.RockerSwitch
+        FaultsinjectionEditFieldLabel  matlab.ui.control.Label
+        FaultsinjectionEditField       matlab.ui.control.EditField
+        TestmodeLabel                  matlab.ui.control.Label
+        RMOTEditFieldLabel             matlab.ui.control.Label
+        RMOTEditField                  matlab.ui.control.NumericEditField
+        HPSDELAYEditFieldLabel         matlab.ui.control.Label
+        HPSDELAYEditField              matlab.ui.control.NumericEditField
+        TemperatureEditFieldLabel      matlab.ui.control.Label
+        TemperatureEditField           matlab.ui.control.NumericEditField
+        ReleaseLimitEditFieldLabel     matlab.ui.control.Label
+        ReleaseLimitEditField          matlab.ui.control.NumericEditField
+        CurrTimeEditFieldLabel         matlab.ui.control.Label
+        CurrTimeEditField              matlab.ui.control.NumericEditField
+        UButton                        matlab.ui.control.Button
+        UpdateParamLabel               matlab.ui.control.Label
+        timeButton                     matlab.ui.control.Button
+        FreeTravelLEditFieldLabel      matlab.ui.control.Label
+        FreeTravelLEditField           matlab.ui.control.NumericEditField
+        FreeTravelREditFieldLabel      matlab.ui.control.Label
+        FreeTravelREditField           matlab.ui.control.NumericEditField
+        SButton                        matlab.ui.control.Button
+        StopLabel                      matlab.ui.control.Label
+        UIAxes                         matlab.ui.control.UIAxes
+        UIAxes2                        matlab.ui.control.UIAxes
+    end
+
+
+    
+    methods (Access = public)
+        
+        function [r]= func(ret,app)
+              %APPRELEASE=evalin('base','APPRELEASE');
+             token = strtok(app.PBCStateLabel.Text,':')
+              
+             
+             if ret==113
+                   
+                     
+                       str= append(token,":Applying");
+             disp(str)
+
+                       app.PBCStateLabel.Text=str;
+                       
+               elseif ret==27
+                   
+                     
+                       str=append (token,":Applied");
+                                            disp(str)
+
+                       app.PBCStateLabel.Text=str;
+
+               elseif ret==135
+                   
+                    
+                     str=append (token,":Releasing");
+                                          disp(str)
+
+                     app.PBCStateLabel.Text=str;
+                     
+               elseif ret==54
+                   
+                      
+                     str= append (token,":Released");
+                     disp(str)
+                      app.PBCStateLabel.Text=str;
+               elseif ret==66
+                   
+                      
+                     str= append (token,":Dynamic");
+                     disp(str)
+                      app.PBCStateLabel.Text=str;
+               
+               end
+               
+        end
+        
+  
+
+    end
+
+    % Callbacks that handle component events
+    methods (Access = private)
+
+        % Code that executes after component creation
+        function startupFcn(app)
+                 movegui(app.UIFigure,'center');
+                 app.UIAxes.Title.Color='0,0,0';
+                 app.UIAxes2.Title.Color='0,0,0';
+
+                 Model='APB_Model0_v03_Test';
+                 load("workspace.mat")
+                 app.SlopeEditField.Value=phys_RdEnvt_Slope;
+              
+                 evalin('base','Data_IntegDRYJPN3');
+                 evalin('base','startupNew_2');
+                 app.PressurebarKnob.Value=evalin('base','calb_Driver_Prss');
+                 app.Knob.Value=evalin('base','calb_Driver_acce');
+                 assignin("base",'calb_Driver_bttn',0);
+                 app.HstAvail_LEditField.Value=evalin('base','calb_HWDrCt_HstAvL');
+                 app.HstAvail_REditField.Value=evalin('base','calb_HWDrCt_HstAvR');
+              
+                 app.ACT_INITREditField.Value=calb_PdsFcn_DSR9;
+                 app.ACT_INITLEditField.Value=calb_PdsFcn_DSR1;
+                 app.VoltageEditField.Value=phys_PwrNet_V_In;
+                 app.RMOTEditField.Value=calb_ActMtr_RMotR;
+                 app.KMOTEditField.Value=calb_ActMtr_KMotL
+                 app.ReleaseLimitEditField.Value=ReleaseLimit;
+                 app.TemperatureEditField.Value=calb_VehBhv_Temp
+            
+        end
+
+        % Callback function
+        function StartstopSimulationButtonPushed(app, event)
+         
+       
+               
+        end
+
+        % Button pushed function: PButton
+        function PButtonPushed(app, event)
+              
+            
+             
+               if app.SimTimeEditField.Value==0
+              f = msgbox("Sim time Invalid Value","Error","error");
+           
+              else
+                  
+                  
+           if strcmp('Left/Right',app.Switch_3.Value)
+              
+              
+                  courant=evalin('base','CurrOutL');
+                 
+                 VoltagOut=evalin('base','VoltagOutL');
+                 Clamp=evalin('base','ClampL');
+           
+           
+           else
+                   
+            
+            
+              
+               courant=evalin('base','CurrOutR');
+                 VoltagOut=evalin('base','VoltagOutR');
+                 Clamp=evalin('base','ClampR');
+           end
+           
+       
+           cla(app.UIAxes);
+           app.UIAxes.XLim=[0 app.SimTimeEditField.Value]; 
+           app.UIAxes2.XLim=[0 app.SimTimeEditField.Value]; 
+
+
+       
+         hold(app.UIAxes,'on') ;
+         plot(app.UIAxes,VoltagOut.Time,VoltagOut.Data(:,1),'-'); 
+       
+         plot(app.UIAxes,courant.Time,courant.Data(:,1),'-');
+         legend(app.UIAxes,'VoltageIn(V)','CurrentIn(A)');
+        
+         hold(app.UIAxes,'off')
+         plot(app.UIAxes2,Clamp.Time,Clamp.Data(:,1),'-');
+        
+        end
+        
+           
+        end
+
+        % Value changed function: SIButton
+        function SIButtonValueChanged(app, event)
+         
+                 
+                 app.Lamp_11.Enable=true;
+                 app.Lamp.Enable=true;
+                 pause(0.8);
+                 i=0;
+                 app.Lamp_10.Enable=true;
+                 app.Lamp_3.Enable=true;
+              
+                 while (app.Gauge.Value<100)
+                    i=i+0.5
+                    app.Gauge2.Value= app.Gauge2.Value+i;
+                    app.Gauge.Value= app.Gauge.Value+i;
+                    pause(0.09);
+                 end
+                
+                 app.Lamp_2.Enable=true;
+                 app.Lamp_7.Enable=true;
+                  while (app.Gauge.Value>10)
+                    i=i+0.5
+                    app.Gauge2.Value= app.Gauge2.Value-i;
+                    app.Gauge.Value= app.Gauge.Value-i;
+                    pause(0.05);
+                 end
+            
+            if app.SimTimeEditField.Value==0
+              f = msgbox("Sim time Invalid Value","Error","error");
+           
+           else
+         
+           
+            app.UIAxes.XLim=[0 app.SimTimeEditField.Value];     
+
+            app.UIAxes2.XLim=[0 app.SimTimeEditField.Value];     
+         
+       
+          
+          
+            %% Instru Test mode avant la simulation......
+         
+         
+         
+         
+         
+         
+         instru= char(app.FaultsinjectionEditField.Value);
+         n=strlength(instru);
+         idx=strfind(instru,",");
+         digit=isstrprop(instru,"digit");
+         Letters=isstrprop(instru,"alpha");
+         Sd=sum(digit,'all');
+         Sl=sum(Letters,'all');
+         
+             a= extractBefore(instru,',');
+             a=str2double(a)
+             b= extractAfter(instru,',');
+             b=str2double(b)
+            
+             z=a
+             disp(a)
+             disp(b)
+             disp(z)
+        
+             if ~strcmp('Off',app.Switch_4.Value)
+               
+             
+                 
+         if idx~=2 & idx ~=3 | numel(idx)==0
+          
+               f = msgbox("Please put a comma between inputs","Error","error");
+       
+         elseif isnan(a) | a>40
+             
+          msgbox("There's only 40 errors, please choose betwen 1 and 40","Error","error");
+          
+         elseif Sl>0   
+             f = msgbox("No character should be used","Error","error");
+             
+        elseif isnan(b) | b>1000
+              msgbox("We can only assign a value between 1 and 1000","Error","error");
+         else
+             
+             
+    
+                    switch  z
+                    case 1
+                        %disp('1') 
+                     
+                      
+                        app.Lamp_13.Enable=true;
+                    case 2
+                        disp('2')
+                       
+                        app.Lamp_14.Enable=true;
+                    case 3
+                        disp('3')
+                   
+                    
+                    case 4
+                        disp('4')
+                       
+                        app.Lamp_15.Enable=true;
+                    case 5
+                       
+                        disp('5')
+                        app.Lamp_16.Enable=true;
+                    case 6
+                        
+                        disp('6')
+                        app.Lamp_17.Enable=true;
+                    case 7
+                    
+                        disp('7')
+                        app.Lamp_18.Enable=true;
+                    case 8
+                     
+                        disp('8')
+                        app.Lamp_19.Enable=true;
+                    case 9
+                    
+                        disp('9')
+                        app.Lamp_20.Enable=true;
+                    case 10
+                      
+                        disp('10')
+                        app.Lamp_21.Enable=true;
+                    case 11
+                      
+                        disp('11')
+                        app.Lamp_23.Enable=true;
+                    case 12
+                       
+                        disp('12')
+                        app.Lamp_24.Enable=true;
+                    case 13
+                        
+                        disp('13')
+                        app.Lamp_25.Enable=true;
+                    case 14
+                        
+                        disp('14')
+                        app.Lamp_26.Enable=true;
+                    case 15
+                         
+                      
+                        disp('15')
+                        app.Lamp_27.Enable=true;
+                    case 16
+                         
+                  
+                        disp('16')
+                        app.Lamp_28.Enable=true;
+                    case 17
+                        
+                       
+                        disp('17')
+                        app.Lamp_29.Enable=true;
+                    case 18
+                          
+                      
+                        disp('18')
+                        app.Lamp_22.Enable=true;
+                    case 19
+                          
+                        app.Lamp_38.Enable=true;
+                        disp('19')
+                    case 20
+                       
+                         app.Lamp_37.Enable=true;
+                        disp('20')
+                    case 21
+                        
+                       app.Lamp_36.Enable=true;
+                        disp('21')
+                    case 22
+                        
+                          app.Lamp_30.Enable=true;
+                        disp('22')
+                    case 23
+                            app.Lamp_35.Enable=true;
+                        disp('23')
+                    case 24
+                         app.Lamp_34.Enable=true;
+                        disp('24')
+                    case 25
+                         app.Lamp_33.Enable=true;
+                        disp('25')
+                    case 26
+                         app.Lamp_32.Enable=true;
+                        disp('26')
+                    case 27
+                         app.Lamp_31.Enable=true;
+                        disp('27')
+                        
+                    case 28
+                         app.Lamp_47.Enable=true;
+               
+                        disp('28')
+                    case 29
+                         app.Lamp_46.Enable=true
+                        disp('29')
+                    case 30
+                         app.Lamp_45.Enable=true
+                        disp('30')
+                    case 31
+                         app.Lamp_39.Enable=true
+                        disp('31')
+                    case 32
+                         app.Lamp_44.Enable=true
+                        disp('32')
+                    case 33
+                         app.Lamp_43.Enable=true
+                        disp('33')
+                    case 34
+                         app.Lamp_42.Enable=true
+                        disp('34')
+                    case 35
+                         app.Lamp_41.Enable=true
+                        disp('35')
+                    case 36
+                         app.Lamp_40.Enable=true
+                        disp('36')
+                    case 37
+                        % app.Lamp_31.Enable=true
+                        disp('37')
+                    case 38
+                        % app.Lamp_31.Enable=true
+                        disp('38')
+                    case 39
+                        % app.Lamp_31.Enable=true
+                        disp('39')
+               otherwise
+                        disp('nothing')
+                        
+           end 
+         end
+             else
+   
+        
+              
+       
+          
+          
+
+               Model='APB_Model0_v03_Test';
+               mdl = Simulink.SimulationInput(Model);
+           
+
+           
+               
+              
+               simIn = setModelParameter(mdl,'StopTime',app.SimTimeEditField.Value);
+               out = sim(simIn.ModelName,app.SimTimeEditField.Value);
+         
+              
+        
+ 
+            
+               assignin("base",'VoltagOutL', out.phys_ActHbdg_PBCVOLIn_L);
+               assignin("base",'CurrOutL',timeseries(out.phys_ActHbdg_PBCCurrIn_L))
+               assignin("base",'VoltagOutR', out.phys_ActHbdg_PBCVOLIn_R);
+               assignin("base",'CurrOutR',timeseries(out.phys_ActHbdg_PBCCurrIn_R));
+             
+               assignin("base",'ClampL',timeseries(out.phys_ActCal_PadForce_L));
+               assignin("base",'ClampR',timeseries(out.phys_ActCal_PadForce_R));
+               assignin("base",'APPRELEASE',out.AppRelease);
+               
+               assignin("base",'Faulty',timeseries(out.Faulty));
+               Faulty=evalin('base','Faulty');
+               APPRELEASE=evalin('base','APPRELEASE');
+           
+           
+               global ret;
+               
+               %When simtime is very high(greater than 20 secondes) this function needs to be commented
+               
+               app.Gauge2.Value=0;
+               for i=1:length(APPRELEASE.Data)
+                    app.Gauge2.Value=APPRELEASE.Data(i);
+                  ret= APPRELEASE.Data(i)
+                       func(ret,app);
+                    pause(0.00000005)
+                end
+
+               Alert=[];
+               z=1;
+             
+               for i=1:1:39
+                  if Faulty.Data(end,i)==66               %%Switch case selon la faute relevée depuis le block fault du MIL.
+                       Alert(z)=i;
+                       z=z+1;
+
+                  end
+                end
+            
+                
+                    
+           
+           
+                assignin("base",'z',z); 
+                assignin("base",'Alert',Alert);     
+
+               
+                 for x=1:1:z-1  
+            
+                 f=num2str(x);  
+                 if    numel(Alert)==0
+                break;
+                 end
+             
+           switch  Alert(x)
+                    case 1
+                        disp('1') 
+                     
+                      
+                        app.Lamp_13.Enable=true;
+                    case 2
+                        disp('2')
+                       
+                        app.Lamp_14.Enable=true;
+                    case 3
+                        disp('3')
+                       
+                        app.Lamp_12.Enable=true;
+                    case 4
+                        disp('4')
+                       
+                        app.Lamp_15.Enable=true;
+                    case 5
+                       
+                        disp('5')
+                        app.Lamp_16.Enable=true;
+                    case 6
+                        
+                        disp('6')
+                        app.Lamp_17.Enable=true;
+                    case 7
+                    
+                        disp('7')
+                        app.Lamp_18.Enable=true;
+                    case 8
+                     
+                        disp('8')
+                        app.Lamp_19.Enable=true;
+                    case 9
+                    
+                        disp('9')
+                        app.Lamp_20.Enable=true;
+                    case 10
+                      
+                        disp('10')
+                        app.Lamp_21.Enable=true;
+                    case 11
+                      
+                        disp('11')
+                        app.Lamp_23.Enable=true;
+                    case 12
+                       
+                        disp('12')
+                        app.Lamp_24.Enable=true;
+                    case 13
+                        
+                        disp('13')
+                        app.Lamp_25.Enable=true;
+                    case 14
+                        
+                        disp('14')
+                        app.Lamp_26.Enable=true;
+                    case 15
+                         
+                      
+                        disp('15')
+                        app.Lamp_27.Enable=true;
+                    case 16
+                         
+                  
+                        disp('16')
+                        app.Lamp_28.Enable=true;
+                    case 17
+                        
+                       
+                        disp('17')
+                        app.Lamp_29.Enable=true;
+                    case 18
+                          
+                      
+                        disp('18')
+                        app.Lamp_22.Enable=true;
+                    case 19
+                          
+                        app.Lamp_38.Enable=true;
+                        disp('19')
+                    case 20
+                       
+                         app.Lamp_37.Enable=true;
+                        disp('20')
+                    case 21
+                        
+                       app.Lamp_36.Enable=true;
+                        disp('21')
+                    case 22
+                        
+                          app.Lamp_30.Enable=true;
+                        disp('22')
+                    case 23
+                            app.Lamp_35.Enable=true;
+                        disp('23')
+                    case 24
+                         app.Lamp_34.Enable=true;
+                        disp('24')
+                    case 25
+                         app.Lamp_33.Enable=true;
+                        disp('25')
+                    case 26
+                         app.Lamp_32.Enable=true;
+                        disp('26')
+                    case 27
+                         app.Lamp_31.Enable=true;
+                        disp('27')
+                        
+                    case 28
+                         app.Lamp_47.Enable=true;
+               
+                        disp('28')
+                    case 29
+                         app.Lamp_46.Enable=true
+                        disp('29')
+                    case 30
+                         app.Lamp_45.Enable=true
+                        disp('30')
+                    case 31
+                         app.Lamp_39.Enable=true
+                        disp('31')
+                    case 32
+                         app.Lamp_44.Enable=true
+                        disp('32')
+                    case 33
+                         app.Lamp_43.Enable=true
+                        disp('33')
+                    case 34
+                         app.Lamp_42.Enable=true
+                        disp('34')
+                    case 35
+                         app.Lamp_41.Enable=true
+                        disp('35')
+                    case 36
+                         app.Lamp_40.Enable=true
+                        disp('36')
+                    case 37
+                        % app.Lamp_31.Enable=true
+                        disp('37')
+                    case 38
+                        % app.Lamp_31.Enable=true
+                        disp('38')
+                    case 39
+                        % app.Lamp_31.Enable=true
+                        disp('39')
+               otherwise
+                        disp('nothing')
+                        
+           end
+           
+                 end
+           
+            z=z-1;     
+            if (z==0)
+
+          
+          disp('no error to show');
+
+           
+           end
+     
+     
+         end
+    
+
+               end                            
+      
+        
+        end
+
+        % Value changed function: ReleaseButton
+        function ReleaseButtonValueChanged(app, event)
+
+            set_param('APB_Model0_v03_Test','SimulationCommand','pause')  
+
+            assignin("base",'calb_Driver_bttn',-1);
+            Vlt=app.VoltageEditField.Value;
+            Actl=app.ACT_INITLEditField.Value;
+            Actr=app.ACT_INITREditField.Value;
+            assignin("base",'phys_PwrNet_V_In',Vlt); 
+            assignin("base",'calb_Driver_Prss',app.PressurebarKnob.Value);
+            assignin("base",'calb_Driver_acce',app.Knob.Value);
+            assignin("base",'ReleaseLimit',app.ReleaseLimitEditField.Value);
+            assignin("base",'calb_PdsFcn_DSR9',Actr);
+            assignin("base",'calb_PdsFcn_DSR1',Actl);
+            assignin("base",'phys_RdEnvt_Slope',app.SlopeEditField.Value);
+            assignin("base",'Instru_FreeTravelR',app.FreeTravelREditField.Value);
+            assignin("base",'Instru_FreeTravelL',app.FreeTravelLEditField.Value);
+
+            assignin("base",'calb_ActMtr_KMotL',app.KMOTEditField.Value);
+            assignin("base",'calb_ActMtr_RMotR',app.RMOTEditField.Value);
+            assignin("base",'Instru_HpsAckDelay',app.HPSDELAYEditField.Value);  
+            assignin("base",'calb_HWDrCt_HstAvL',app.HstAvail_LEditField.Value);
+            assignin("base",'calb_HWDrCt_HstAvR',app.HstAvail_REditField.Value);
+          
+            %Fault  1-2
+            %assignin("base",'calb_PdsFcn_DSV1',0);
+            %assignin("base",'calb_PdsFcn_DSV2',0);
+            %assignin("base",'calb_PdsFcn_DSV3',0);
+            assignin("base",'calb_VehBhv_Temp',app.TemperatureEditField.Value); 
+           
+            x=get_param('APB_Model0_v03_Test','SimulationTime')
+            app.CurrTimeEditField.Value=x;
+            set_param('APB_Model0_v03_Test', 'SimulationCommand', 'update')
+            set_param('APB_Model0_v03_Test','SimulationCommand','continue')
+            
+            
+    
+       
+               
+        end
+
+        % Button pushed function: ApplyButton
+        function ApplyButtonPushed(app, event)
+            
+           
+            set_param('APB_Model0_v03_Test','SimulationCommand','pause')  
+           
+           
+            Vlt=app.VoltageEditField.Value;
+            Actl=app.ACT_INITLEditField.Value;
+            Actr=app.ACT_INITREditField.Value;
+            assignin("base",'phys_PwrNet_V_In',Vlt); 
+            assignin("base",'calb_Driver_Prss',app.PressurebarKnob.Value);
+            assignin("base",'calb_Driver_acce',app.Knob.Value);
+            assignin("base",'ReleaseLimit',app.ReleaseLimitEditField.Value);
+            assignin("base",'calb_PdsFcn_DSR9',Actr);
+            assignin("base",'calb_PdsFcn_DSR1',Actl);
+            assignin("base",'Instru_FreeTravelR',app.FreeTravelREditField.Value);
+            assignin("base",'Instru_FreeTravelL',app.FreeTravelLEditField.Value);
+            assignin("base",'phys_RdEnvt_Slope',app.SlopeEditField.Value);
+            assignin("base",'calb_ActMtr_KMotL',app.KMOTEditField.Value);
+            assignin("base",'calb_ActMtr_RMotR',app.RMOTEditField.Value);
+            assignin("base",'Instru_HpsAckDelay',app.HPSDELAYEditField.Value);  
+            assignin("base",'calb_HWDrCt_HstAvL',app.HstAvail_LEditField.Value);
+            assignin("base",'calb_HWDrCt_HstAvR',app.HstAvail_REditField.Value);
+           
+            %Fault 1-2
+            %assignin("base",'calb_PdsFcn_DSV1',0);
+            %assignin("base",'calb_PdsFcn_DSV2',0);
+            %assignin("base",'calb_PdsFcn_DSV3',0);
+            assignin("base",'calb_VehBhv_Temp',app.TemperatureEditField.Value); 
+      
+            x=get_param('APB_Model0_v03_Test','SimulationTime')
+            app.CurrTimeEditField.Value=x;
+                
+            assignin("base",'calb_Driver_bttn',1);
+            set_param('APB_Model0_v03_Test', 'SimulationCommand', 'update')
+            set_param('APB_Model0_v03_Test','SimulationCommand','continue')
+            
+        end
+
+        % Size changed function: Panel
+        function PanelSizeChanged(app, event)
+            position = app.Panel.Position;
+            
+        end
+
+        % Value changed function: PressurebarKnob
+        function PressurebarKnobValueChanged(app, event)
+            value = app.PressurebarKnob.Value;
+            
+        end
+
+        % Value changed function: SlopeEditField
+        function SlopeEditFieldValueChanged(app, event)
+            value = app.SlopeEditField.Value;
+            
+        end
+
+        % Value changed function: ACT_INITLEditField
+        function ACT_INITLEditFieldValueChanged(app, event)
+            value = app.ACT_INITLEditField.Value;
+            
+        end
+
+        % Value changed function: SimTimeEditField
+        function SimTimeEditFieldValueChanged(app, event)
+            value = app.SimTimeEditField.Value;
+            
+        end
+
+        % Button down function: UIAxes
+        function UIAxesButtonDown(app, event)
+            
+        end
+
+        % Button pushed function: ResetButton
+        function ResetButtonPushed(app, event)
+                    
+                 app.Lamp_13.Enable=false;
+                 app.Lamp_14.Enable=false;
+                 app.Lamp_12.Enable=false;
+                 app.Lamp_15.Enable=false;
+                 app.Lamp_16.Enable=false;
+                 app.Lamp_17.Enable=false;
+                 app.Lamp_18.Enable=false;
+                 app.Lamp_19.Enable=false;
+                 app.Lamp_20.Enable=false;
+
+                 app.Lamp_21.Enable=false;
+                 app.Lamp_23.Enable=false;
+                 app.Lamp_24.Enable=false;
+                 app.Lamp_25.Enable=false;
+                 app.Lamp_26.Enable=false;
+                 app.Lamp_27.Enable=false;
+                 app.Lamp_28.Enable=false;
+                 app.Lamp_29.Enable=false;
+                 app.Lamp_22.Enable=false;
+                 
+                 app.Lamp_38.Enable=false;
+                 app.Lamp_37.Enable=false;
+                 app.Lamp_36.Enable=false;
+                 app.Lamp_30.Enable=false;
+                 app.Lamp_35.Enable=false;
+                 app.Lamp_34.Enable=false;
+                 app.Lamp_33.Enable=false;
+                 app.Lamp_32.Enable=false;
+                 app.Lamp_31.Enable=false;
+
+                 app.Lamp_47.Enable=false;
+                 app.Lamp_46.Enable=false;
+                 app.Lamp_45.Enable=false;
+                 app.Lamp_39.Enable=false;
+                 app.Lamp_44.Enable=false;
+                 app.Lamp_43.Enable=false;
+                 app.Lamp_42.Enable=false;
+                 app.Lamp_41.Enable=false;
+                 app.Lamp_40.Enable=false;
+                 
+                 
+            clear mex;
+        end
+
+        % Value changed function: FaultsinjectionEditField
+        function FaultsinjectionEditFieldValueChanged(app, event)
+            value = app.FaultsinjectionEditField.Value;
+            
+        end
+
+        % Button pushed function: UButton
+        function UButtonPushed(app, event)
+           
+                     
+            %%%% Stop simulation and assign    
+            x=get_param('APB_Model0_v03_Test','SimulationTime')
+            app.CurrTimeEditField.Value=x;
+            set_param('APB_Model0_v03_Test','SimulationCommand','pause')
+            
+            Vlt=app.VoltageEditField.Value;
+            Actl=app.ACT_INITLEditField.Value;
+            Actr=app.ACT_INITREditField.Value;
+            assignin("base",'phys_PwrNet_V_In',Vlt); 
+            assignin("base",'calb_Driver_Prss',app.PressurebarKnob.Value);
+            assignin("base",'calb_Driver_acce',app.Knob.Value);
+            assignin("base",'ReleaseLimit',app.ReleaseLimitEditField.Value);
+            assignin("base",'calb_PdsFcn_DSR9',Actr);
+            assignin("base",'calb_PdsFcn_DSR1',Actl);
+            assignin("base",'phys_RdEnvt_Slope',app.SlopeEditField.Value);
+            assignin("base",'Instru_FreeTravelR',app.FreeTravelREditField.Value);
+            assignin("base",'Instru_FreeTravelL',app.FreeTravelLEditField.Value);
+
+            assignin("base",'calb_ActMtr_KMotL',app.KMOTEditField.Value);
+            assignin("base",'calb_ActMtr_RMotR',app.RMOTEditField.Value);
+            assignin("base",'Instru_HpsAckDelay',app.HPSDELAYEditField.Value);  
+            assignin("base",'calb_HWDrCt_HstAvL',app.HstAvail_LEditField.Value);
+            assignin("base",'calb_HWDrCt_HstAvR',app.HstAvail_REditField.Value);
+            %assignin("base",'calb_PdsFcn_DSV1',0);
+            %assignin("base",'calb_PdsFcn_DSV2',0);
+            %assignin("base",'calb_PdsFcn_DSV3',0);
+            assignin("base",'calb_VehBhv_Temp',app.TemperatureEditField.Value); 
+            
+            
+            %%%%      Update then continue
+            set_param('APB_Model0_v03_Test', 'SimulationCommand', 'update')
+            set_param('APB_Model0_v03_Test','SimulationCommand','continue')
+
+        end
+
+        % Value changed function: CurrTimeEditField
+        function CurrTimeEditFieldValueChanged(app, event)
+            value = app.CurrTimeEditField.Value;
+            
+        end
+
+        % Button pushed function: timeButton
+        function timeButtonPushed(app, event)
+
+                  %  rto = get_param(To Workspace13,'RuntimeObject');
+           x=get_param('APB_Model0_v03_Test','SimulationTime')
+            app.CurrTimeEditField.Value=x;
+      
+        end
+
+        % Callback function
+        function StopButtonPushed(app, event)
+            set_param('APB_Model0_v03_Test','SimulationCommand','stop')
+            pause(0.5)
+               assignin("base",'VoltagOutL', out.phys_ActHbdg_PBCVOLIn_L);
+               assignin("base",'CurrOutL',timeseries(out.phys_ActHbdg_PBCCurrIn_L))
+               assignin("base",'VoltagOutR', out.phys_ActHbdg_PBCVOLIn_R);
+               assignin("base",'CurrOutR',timeseries(out.phys_ActHbdg_PBCCurrIn_R));
+             
+               assignin("base",'ClampL',timeseries(out.phys_ActCal_PadForce_L));
+               assignin("base",'ClampR',timeseries(out.phys_ActCal_PadForce_R));    
+        end
+
+        % Button pushed function: SButton
+        function SButtonPushed(app, event)
+                     set_param('APB_Model0_v03_Test','SimulationCommand','stop')
+
+        end
+    end
+
+    % Component initialization
+    methods (Access = private)
+
+        % Create UIFigure and components
+        function createComponents(app)
+
+            % Create UIFigure and hide until all components are created
+            app.UIFigure = uifigure('Visible', 'off');
+            app.UIFigure.Colormap = [0.2431 0.149 0.6588;0.2431 0.1529 0.6745;0.2471 0.1569 0.6863;0.2471 0.1608 0.698;0.251 0.1647 0.7059;0.251 0.1686 0.7176;0.2549 0.1725 0.7294;0.2549 0.1765 0.7412;0.2588 0.1804 0.749;0.2588 0.1843 0.7608;0.0588 1 1;0.2627 0.1922 0.7843;0.2627 0.1961 0.7922;0.2667 0.2 0.8039;0.2667 0.2039 0.8157;0.2706 0.2078 0.8235;0.2706 0.2157 0.8353;0.2706 0.2196 0.8431;0.2745 0.2235 0.851;0.2745 0.2275 0.8627;0.2745 0.2314 0.8706;0.2745 0.2392 0.8784;0.2784 0.2431 0.8824;0.2784 0.2471 0.8902;0.2784 0.2549 0.898;0.2784 0.2588 0.902;0.2784 0.2667 0.9098;0.2784 0.2706 0.9137;0.2784 0.2745 0.9216;0.2824 0.2824 0.9255;0.2824 0.2863 0.9294;0.2824 0.2941 0.9333;0.2824 0.298 0.9412;0.2824 0.3059 0.9451;0.2824 0.3098 0.949;0.2824 0.3137 0.9529;0.2824 0.3216 0.9569;0.2824 0.3255 0.9608;0.2824 0.3294 0.9647;0.2784 0.3373 0.9686;0.2784 0.3412 0.9686;0.2784 0.349 0.9725;0.2784 0.3529 0.9765;0.2784 0.3569 0.9804;0.2784 0.3647 0.9804;0.2745 0.3686 0.9843;0.2745 0.3765 0.9843;0.2745 0.3804 0.9882;0.2706 0.3843 0.9882;0.2706 0.3922 0.9922;0.2667 0.3961 0.9922;0.2627 0.4039 0.9922;0.2627 0.4078 0.9961;0.2588 0.4157 0.9961;0.2549 0.4196 0.9961;0.251 0.4275 0.9961;0.2471 0.4314 1;0.2431 0.4392 1;0.2353 0.4431 1;0.2314 0.451 1;0.2235 0.4549 1;0.2196 0.4627 0.9961;0.2118 0.4667 0.9961;0.2078 0.4745 0.9922;0.2 0.4784 0.9922;0.1961 0.4863 0.9882;0.1922 0.4902 0.9882;0.1882 0.498 0.9843;0.1843 0.502 0.9804;0.1843 0.5098 0.9804;0.1804 0.5137 0.9765;0.1804 0.5176 0.9725;0.1804 0.5255 0.9725;0.1804 0.5294 0.9686;0.1765 0.5333 0.9647;0.1765 0.5412 0.9608;0.1765 0.5451 0.9569;0.1765 0.549 0.9529;0.1765 0.5569 0.949;0.1725 0.5608 0.9451;0.1725 0.5647 0.9412;0.1686 0.5686 0.9373;0.1647 0.5765 0.9333;0.1608 0.5804 0.9294;0.1569 0.5843 0.9255;0.1529 0.5922 0.9216;0.1529 0.5961 0.9176;0.149 0.6 0.9137;0.149 0.6039 0.9098;0.1451 0.6078 0.9098;0.1451 0.6118 0.9059;0.1412 0.6196 0.902;0.1412 0.6235 0.898;0.1373 0.6275 0.898;0.1373 0.6314 0.8941;0.1333 0.6353 0.8941;0.1294 0.6392 0.8902;0.1255 0.6471 0.8902;0.1216 0.651 0.8863;0.1176 0.6549 0.8824;0.1137 0.6588 0.8824;0.1137 0.6627 0.8784;0.1098 0.6667 0.8745;0.1059 0.6706 0.8706;0.102 0.6745 0.8667;0.098 0.6784 0.8627;0.0902 0.6824 0.8549;0.0863 0.6863 0.851;0.0784 0.6902 0.8471;0.0706 0.6941 0.8392;0.0627 0.698 0.8353;0.0549 0.702 0.8314;0.0431 0.702 0.8235;0.0314 0.7059 0.8196;0.0235 0.7098 0.8118;0.0157 0.7137 0.8078;0.0078 0.7176 0.8;0.0039 0.7176 0.7922;0 0.7216 0.7882;0 0.7255 0.7804;0 0.7294 0.7765;0.0039 0.7294 0.7686;0.0078 0.7333 0.7608;0.0157 0.7333 0.7569;0.0235 0.7373 0.749;0.0353 0.7412 0.7412;0.051 0.7412 0.7373;0.0627 0.7451 0.7294;0.0784 0.7451 0.7216;0.0902 0.749 0.7137;0.102 0.7529 0.7098;0.1137 0.7529 0.702;0.1255 0.7569 0.6941;0.1373 0.7569 0.6863;0.1451 0.7608 0.6824;0.1529 0.7608 0.6745;0.1608 0.7647 0.6667;0.1686 0.7647 0.6588;0.1725 0.7686 0.651;0.1804 0.7686 0.6471;0.1843 0.7725 0.6392;0.1922 0.7725 0.6314;0.1961 0.7765 0.6235;0.2 0.7804 0.6157;0.2078 0.7804 0.6078;0.2118 0.7843 0.6;0.2196 0.7843 0.5882;0.2235 0.7882 0.5804;0.2314 0.7882 0.5725;0.2392 0.7922 0.5647;0.251 0.7922 0.5529;0.2588 0.7922 0.5451;0.2706 0.7961 0.5373;0.2824 0.7961 0.5255;0.2941 0.7961 0.5176;0.3059 0.8 0.5059;0.3176 0.8 0.498;0.3294 0.8 0.4863;0.3412 0.8 0.4784;0.3529 0.8 0.4667;0.3686 0.8039 0.4549;0.3804 0.8039 0.4471;0.3922 0.8039 0.4353;0.4039 0.8039 0.4235;0.4196 0.8039 0.4118;0.4314 0.8039 0.4;0.4471 0.8039 0.3922;0.4627 0.8 0.3804;0.4745 0.8 0.3686;0.4902 0.8 0.3569;0.5059 0.8 0.349;0.5176 0.8 0.3373;0.5333 0.7961 0.3255;0.5451 0.7961 0.3176;0.5608 0.7961 0.3059;0.5765 0.7922 0.2941;0.5882 0.7922 0.2824;0.6039 0.7882 0.2745;0.6157 0.7882 0.2627;0.6314 0.7843 0.251;0.6431 0.7843 0.2431;0.6549 0.7804 0.2314;0.6706 0.7804 0.2235;0.6824 0.7765 0.2157;0.698 0.7765 0.2078;0.7098 0.7725 0.2;0.7216 0.7686 0.1922;0.7333 0.7686 0.1843;0.7451 0.7647 0.1765;0.7608 0.7647 0.1725;0.7725 0.7608 0.1647;0.7843 0.7569 0.1608;0.7961 0.7569 0.1569;0.8078 0.7529 0.1529;0.8157 0.749 0.1529;0.8275 0.749 0.1529;0.8392 0.7451 0.1529;0.851 0.7451 0.1569;0.8588 0.7412 0.1569;0.8706 0.7373 0.1608;0.8824 0.7373 0.1647;0.8902 0.7373 0.1686;0.902 0.7333 0.1765;0.9098 0.7333 0.1804;0.9176 0.7294 0.1882;0.9255 0.7294 0.1961;0.9373 0.7294 0.2078;0.9451 0.7294 0.2157;0.9529 0.7294 0.2235;0.9608 0.7294 0.2314;0.9686 0.7294 0.2392;0.9765 0.7294 0.2431;0.9843 0.7333 0.2431;0.9882 0.7373 0.2431;0.9961 0.7412 0.2392;0.9961 0.7451 0.2353;0.9961 0.7529 0.2314;0.9961 0.7569 0.2275;0.9961 0.7608 0.2235;0.9961 0.7686 0.2196;0.9961 0.7725 0.2157;0.9961 0.7804 0.2078;0.9961 0.7843 0.2039;0.9961 0.7922 0.2;0.9922 0.7961 0.1961;0.9922 0.8039 0.1922;0.9922 0.8078 0.1922;0.9882 0.8157 0.1882;0.9843 0.8235 0.1843;0.9843 0.8275 0.1804;0.9804 0.8353 0.1804;0.9765 0.8392 0.1765;0.9765 0.8471 0.1725;0.9725 0.851 0.1686;0.9686 0.8588 0.1647;0.9686 0.8667 0.1647;0.9647 0.8706 0.1608;0.9647 0.8784 0.1569;0.9608 0.8824 0.1569;0.9608 0.8902 0.1529;0.9608 0.898 0.149;0.9608 0.902 0.149;0.9608 0.9098 0.1451;0.9608 0.9137 0.1412;0.9608 0.9216 0.1373;0.9608 0.9255 0.1333;0.9608 0.9333 0.1294;0.9647 0.9373 0.1255;0.9647 0.9451 0.1216;0.9647 0.949 0.1176;0.9686 0.9569 0.1098;0.9686 0.9608 0.1059;0.9725 0.9686 0.102;0.9725 0.9725 0.0941;0.9765 0.9765 0.0863;0.9765 0.9843 0.0824;1 1 1;1 1 1;1 1 1];
+            app.UIFigure.Position = [100 100 1261 838];
+            app.UIFigure.Name = 'MATLAB App';
+            app.UIFigure.Scrollable = 'on';
+            app.UIFigure.WindowStyle = 'modal';
+
+            % Create SlpEditField_4
+            app.SlpEditField_4 = uieditfield(app.UIFigure, 'numeric');
+            app.SlpEditField_4.FontColor = [0.1608 0.0627 0.0784];
+            app.SlpEditField_4.Position = [750 247 100 22];
+
+            % Create Panel
+            app.Panel = uipanel(app.UIFigure);
+            app.Panel.AutoResizeChildren = 'off';
+            app.Panel.ForegroundColor = [1 1 1];
+            app.Panel.BorderType = 'none';
+            app.Panel.TitlePosition = 'centertop';
+            app.Panel.BackgroundColor = [0.251 0.2588 0.2588];
+            app.Panel.SizeChangedFcn = createCallbackFcn(app, @PanelSizeChanged, true);
+            app.Panel.FontName = 'Palatino Linotype';
+            app.Panel.FontWeight = 'bold';
+            app.Panel.Scrollable = 'on';
+            app.Panel.FontSize = 24;
+            app.Panel.Position = [3 9 1253 830];
+
+            % Create Image
+            app.Image = uiimage(app.Panel);
+            app.Image.Position = [56 17 127 81];
+            app.Image.ImageSource = 'cap.png';
+
+            % Create Gauge
+            app.Gauge = uigauge(app.Panel, 'circular');
+            app.Gauge.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.Gauge.FontColor = [1 1 1];
+            app.Gauge.Position = [110 650 109 109];
+
+            % Create Gauge2
+            app.Gauge2 = uigauge(app.Panel, 'circular');
+            app.Gauge2.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.Gauge2.FontColor = [1 1 1];
+            app.Gauge2.Position = [965 649 111 111];
+
+            % Create Label
+            app.Label = uilabel(app.Panel);
+            app.Label.HorizontalAlignment = 'right';
+            app.Label.Enable = 'off';
+            app.Label.Position = [208 714 25 22];
+            app.Label.Text = '';
+
+            % Create Lamp
+            app.Lamp = uilamp(app.Panel);
+            app.Lamp.Enable = 'off';
+            app.Lamp.Position = [239 724 20 20];
+            app.Lamp.Color = [1 0 0];
+
+            % Create Lamp_3Label
+            app.Lamp_3Label = uilabel(app.Panel);
+            app.Lamp_3Label.HorizontalAlignment = 'right';
+            app.Lamp_3Label.Enable = 'off';
+            app.Lamp_3Label.Position = [201 748 25 22];
+            app.Lamp_3Label.Text = '';
+
+            % Create Lamp_3
+            app.Lamp_3 = uilamp(app.Panel);
+            app.Lamp_3.Enable = 'off';
+            app.Lamp_3.Position = [221 758 20 20];
+            app.Lamp_3.Color = [0.4196 0.4588 0.1804];
+
+            % Create Lamp_2Label
+            app.Lamp_2Label = uilabel(app.Panel);
+            app.Lamp_2Label.HorizontalAlignment = 'right';
+            app.Lamp_2Label.Enable = 'off';
+            app.Lamp_2Label.Position = [-24 765 25 22];
+            app.Lamp_2Label.Text = '';
+
+            % Create Lamp_2
+            app.Lamp_2 = uilamp(app.Panel);
+            app.Lamp_2.Enable = 'off';
+            app.Lamp_2.Position = [182 779 20 20];
+            app.Lamp_2.Color = [0.149 0.6392 0.149];
+
+            % Create Lamp_7
+            app.Lamp_7 = uilamp(app.Panel);
+            app.Lamp_7.Enable = 'off';
+            app.Lamp_7.Position = [995 780 20 20];
+            app.Lamp_7.Color = [0.149 0.6392 0.149];
+
+            % Create PButton
+            app.PButton = uibutton(app.Panel, 'push');
+            app.PButton.ButtonPushedFcn = createCallbackFcn(app, @PButtonPushed, true);
+            app.PButton.IconAlignment = 'right';
+            app.PButton.BackgroundColor = [0 0 0];
+            app.PButton.FontName = 'Niagara Engraved';
+            app.PButton.FontSize = 22;
+            app.PButton.FontAngle = 'italic';
+            app.PButton.FontColor = [1 1 1];
+            app.PButton.Position = [588 365 58 58];
+            app.PButton.Text = 'P';
+
+            % Create PressurebarKnobLabel
+            app.PressurebarKnobLabel = uilabel(app.Panel);
+            app.PressurebarKnobLabel.HorizontalAlignment = 'center';
+            app.PressurebarKnobLabel.FontSize = 14;
+            app.PressurebarKnobLabel.FontWeight = 'bold';
+            app.PressurebarKnobLabel.FontAngle = 'italic';
+            app.PressurebarKnobLabel.FontColor = [1 1 1];
+            app.PressurebarKnobLabel.Position = [420 629 96 22];
+            app.PressurebarKnobLabel.Text = 'Pressure(bar)';
+
+            % Create PressurebarKnob
+            app.PressurebarKnob = uiknob(app.Panel, 'continuous');
+            app.PressurebarKnob.MajorTicks = [25 50 75];
+            app.PressurebarKnob.MajorTickLabels = {'0', '25', '50', '75', '100'};
+            app.PressurebarKnob.ValueChangedFcn = createCallbackFcn(app, @PressurebarKnobValueChanged, true);
+            app.PressurebarKnob.FontSize = 14;
+            app.PressurebarKnob.FontWeight = 'bold';
+            app.PressurebarKnob.FontAngle = 'italic';
+            app.PressurebarKnob.FontColor = [0.8706 0.8392 0.8392];
+            app.PressurebarKnob.Position = [431 674 62 62];
+
+            % Create SlopeEditFieldLabel
+            app.SlopeEditFieldLabel = uilabel(app.Panel);
+            app.SlopeEditFieldLabel.HorizontalAlignment = 'right';
+            app.SlopeEditFieldLabel.FontWeight = 'bold';
+            app.SlopeEditFieldLabel.FontAngle = 'italic';
+            app.SlopeEditFieldLabel.FontColor = [1 1 1];
+            app.SlopeEditFieldLabel.Position = [88 320 38 22];
+            app.SlopeEditFieldLabel.Text = 'Slope';
+
+            % Create SlopeEditField
+            app.SlopeEditField = uieditfield(app.Panel, 'numeric');
+            app.SlopeEditField.ValueChangedFcn = createCallbackFcn(app, @SlopeEditFieldValueChanged, true);
+            app.SlopeEditField.FontWeight = 'bold';
+            app.SlopeEditField.FontAngle = 'italic';
+            app.SlopeEditField.FontColor = [1 1 1];
+            app.SlopeEditField.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.SlopeEditField.Position = [141 320 100 22];
+
+            % Create VoltageEditFieldLabel
+            app.VoltageEditFieldLabel = uilabel(app.Panel);
+            app.VoltageEditFieldLabel.HorizontalAlignment = 'right';
+            app.VoltageEditFieldLabel.FontWeight = 'bold';
+            app.VoltageEditFieldLabel.FontAngle = 'italic';
+            app.VoltageEditFieldLabel.FontColor = [1 1 1];
+            app.VoltageEditFieldLabel.Position = [993 312 48 22];
+            app.VoltageEditFieldLabel.Text = 'Voltage';
+
+            % Create VoltageEditField
+            app.VoltageEditField = uieditfield(app.Panel, 'numeric');
+            app.VoltageEditField.FontWeight = 'bold';
+            app.VoltageEditField.FontAngle = 'italic';
+            app.VoltageEditField.FontColor = [1 1 1];
+            app.VoltageEditField.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.VoltageEditField.Position = [1056 312 100 22];
+
+            % Create ACT_INITREditFieldLabel
+            app.ACT_INITREditFieldLabel = uilabel(app.Panel);
+            app.ACT_INITREditFieldLabel.HorizontalAlignment = 'right';
+            app.ACT_INITREditFieldLabel.FontWeight = 'bold';
+            app.ACT_INITREditFieldLabel.FontAngle = 'italic';
+            app.ACT_INITREditFieldLabel.FontColor = [1 1 1];
+            app.ACT_INITREditFieldLabel.Position = [972 269 69 22];
+            app.ACT_INITREditFieldLabel.Text = 'ACT_INITR';
+
+            % Create ACT_INITREditField
+            app.ACT_INITREditField = uieditfield(app.Panel, 'numeric');
+            app.ACT_INITREditField.FontWeight = 'bold';
+            app.ACT_INITREditField.FontAngle = 'italic';
+            app.ACT_INITREditField.FontColor = [1 1 1];
+            app.ACT_INITREditField.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.ACT_INITREditField.Position = [1056 269 100 22];
+
+            % Create ACT_INITLEditFieldLabel
+            app.ACT_INITLEditFieldLabel = uilabel(app.Panel);
+            app.ACT_INITLEditFieldLabel.HorizontalAlignment = 'right';
+            app.ACT_INITLEditFieldLabel.FontWeight = 'bold';
+            app.ACT_INITLEditFieldLabel.FontAngle = 'italic';
+            app.ACT_INITLEditFieldLabel.FontColor = [1 1 1];
+            app.ACT_INITLEditFieldLabel.Position = [974 290 67 22];
+            app.ACT_INITLEditFieldLabel.Text = 'ACT_INITL';
+
+            % Create ACT_INITLEditField
+            app.ACT_INITLEditField = uieditfield(app.Panel, 'numeric');
+            app.ACT_INITLEditField.ValueChangedFcn = createCallbackFcn(app, @ACT_INITLEditFieldValueChanged, true);
+            app.ACT_INITLEditField.FontWeight = 'bold';
+            app.ACT_INITLEditField.FontAngle = 'italic';
+            app.ACT_INITLEditField.FontColor = [1 1 1];
+            app.ACT_INITLEditField.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.ACT_INITLEditField.Position = [1056 290 100 22];
+
+            % Create Lamp_10Label
+            app.Lamp_10Label = uilabel(app.Panel);
+            app.Lamp_10Label.HorizontalAlignment = 'right';
+            app.Lamp_10Label.Enable = 'off';
+            app.Lamp_10Label.Position = [927 745 25 22];
+            app.Lamp_10Label.Text = '';
+
+            % Create Lamp_10
+            app.Lamp_10 = uilamp(app.Panel);
+            app.Lamp_10.Enable = 'off';
+            app.Lamp_10.Position = [947 755 20 20];
+            app.Lamp_10.Color = [0.4196 0.4588 0.1804];
+
+            % Create Lamp_11Label
+            app.Lamp_11Label = uilabel(app.Panel);
+            app.Lamp_11Label.HorizontalAlignment = 'right';
+            app.Lamp_11Label.Enable = 'off';
+            app.Lamp_11Label.Position = [897 706 25 22];
+            app.Lamp_11Label.Text = '';
+
+            % Create Lamp_11
+            app.Lamp_11 = uilamp(app.Panel);
+            app.Lamp_11.Enable = 'off';
+            app.Lamp_11.Position = [928 716 20 20];
+            app.Lamp_11.Color = [1 0 0];
+
+            % Create SimTimeEditFieldLabel
+            app.SimTimeEditFieldLabel = uilabel(app.Panel);
+            app.SimTimeEditFieldLabel.BackgroundColor = [1 0.9882 0.9882];
+            app.SimTimeEditFieldLabel.HorizontalAlignment = 'right';
+            app.SimTimeEditFieldLabel.FontName = 'Verdana';
+            app.SimTimeEditFieldLabel.Position = [1034 41 66 22];
+            app.SimTimeEditFieldLabel.Text = 'SimTime';
+
+            % Create SimTimeEditField
+            app.SimTimeEditField = uieditfield(app.Panel, 'numeric');
+            app.SimTimeEditField.ValueChangedFcn = createCallbackFcn(app, @SimTimeEditFieldValueChanged, true);
+            app.SimTimeEditField.FontName = 'Verdana';
+            app.SimTimeEditField.Position = [1110 41 100 22];
+
+            % Create SIButton
+            app.SIButton = uibutton(app.Panel, 'state');
+            app.SIButton.ValueChangedFcn = createCallbackFcn(app, @SIButtonValueChanged, true);
+            app.SIButton.Text = 'SI';
+            app.SIButton.BackgroundColor = [0 0 0];
+            app.SIButton.FontName = 'Niagara Engraved';
+            app.SIButton.FontSize = 28;
+            app.SIButton.FontAngle = 'italic';
+            app.SIButton.FontColor = [1 1 1];
+            app.SIButton.Position = [586 480 59 58];
+
+            % Create Knob
+            app.Knob = uiknob(app.Panel, 'continuous');
+            app.Knob.Limits = [0 1000];
+            app.Knob.MajorTicks = [250 500 750];
+            app.Knob.FontColor = [0.8706 0.8392 0.8392];
+            app.Knob.Position = [708 673 62 62];
+
+            % Create Accelerationms2Label
+            app.Accelerationms2Label = uilabel(app.Panel);
+            app.Accelerationms2Label.FontSize = 13;
+            app.Accelerationms2Label.FontWeight = 'bold';
+            app.Accelerationms2Label.FontAngle = 'italic';
+            app.Accelerationms2Label.FontColor = [1 1 1];
+            app.Accelerationms2Label.Position = [671 624 149 22];
+            app.Accelerationms2Label.Text = 'Acceleration(m/s^2)';
+
+            % Create ReleaseButton
+            app.ReleaseButton = uibutton(app.Panel, 'state');
+            app.ReleaseButton.ValueChangedFcn = createCallbackFcn(app, @ReleaseButtonValueChanged, true);
+            app.ReleaseButton.Text = 'Release';
+            app.ReleaseButton.BackgroundColor = [0 0 0];
+            app.ReleaseButton.FontName = 'Niagara Engraved';
+            app.ReleaseButton.FontSize = 24;
+            app.ReleaseButton.FontAngle = 'italic';
+            app.ReleaseButton.FontColor = [1 1 1];
+            app.ReleaseButton.Position = [645 423 66 55];
+
+            % Create ApplyButton
+            app.ApplyButton = uibutton(app.Panel, 'push');
+            app.ApplyButton.ButtonPushedFcn = createCallbackFcn(app, @ApplyButtonPushed, true);
+            app.ApplyButton.BackgroundColor = [0 0 0];
+            app.ApplyButton.FontName = 'Niagara Engraved';
+            app.ApplyButton.FontSize = 24;
+            app.ApplyButton.FontAngle = 'italic';
+            app.ApplyButton.FontColor = [1 1 1];
+            app.ApplyButton.Position = [522 423 66 55];
+            app.ApplyButton.Text = 'Apply';
+
+            % Create FaultySignalsLabel
+            app.FaultySignalsLabel = uilabel(app.Panel);
+            app.FaultySignalsLabel.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.FaultySignalsLabel.FontName = 'Sitka Banner';
+            app.FaultySignalsLabel.FontSize = 30;
+            app.FaultySignalsLabel.FontWeight = 'bold';
+            app.FaultySignalsLabel.FontColor = [1 1 1];
+            app.FaultySignalsLabel.Position = [473 153 294 38];
+            app.FaultySignalsLabel.Text = '        Faulty Signals';
+
+            % Create Label_26
+            app.Label_26 = uilabel(app.Panel);
+            app.Label_26.HorizontalAlignment = 'right';
+            app.Label_26.FontWeight = 'bold';
+            app.Label_26.Enable = 'off';
+            app.Label_26.Position = [419 111 25 22];
+            app.Label_26.Text = '3';
+
+            % Create Lamp_12
+            app.Lamp_12 = uilamp(app.Panel);
+            app.Lamp_12.Enable = 'off';
+            app.Lamp_12.Position = [447 111 20 20];
+            app.Lamp_12.Color = [1 0 0];
+
+            % Create Lamp_15Label
+            app.Lamp_15Label = uilabel(app.Panel);
+            app.Lamp_15Label.HorizontalAlignment = 'right';
+            app.Lamp_15Label.FontWeight = 'bold';
+            app.Lamp_15Label.Enable = 'off';
+            app.Lamp_15Label.Position = [464 110 25 22];
+            app.Lamp_15Label.Text = '4';
+
+            % Create Lamp_15
+            app.Lamp_15 = uilamp(app.Panel);
+            app.Lamp_15.Enable = 'off';
+            app.Lamp_15.Position = [494 111 20 20];
+            app.Lamp_15.Color = [1 0 0];
+
+            % Create Lamp_16Label
+            app.Lamp_16Label = uilabel(app.Panel);
+            app.Lamp_16Label.HorizontalAlignment = 'right';
+            app.Lamp_16Label.FontWeight = 'bold';
+            app.Lamp_16Label.Enable = 'off';
+            app.Lamp_16Label.Position = [507 111 25 22];
+            app.Lamp_16Label.Text = '5';
+
+            % Create Lamp_16
+            app.Lamp_16 = uilamp(app.Panel);
+            app.Lamp_16.Enable = 'off';
+            app.Lamp_16.Position = [540 112 20 20];
+            app.Lamp_16.Color = [1 0 0];
+
+            % Create Lamp_17Label
+            app.Lamp_17Label = uilabel(app.Panel);
+            app.Lamp_17Label.HorizontalAlignment = 'right';
+            app.Lamp_17Label.FontWeight = 'bold';
+            app.Lamp_17Label.Enable = 'off';
+            app.Lamp_17Label.Position = [560 112 25 22];
+            app.Lamp_17Label.Text = '6';
+
+            % Create Lamp_17
+            app.Lamp_17 = uilamp(app.Panel);
+            app.Lamp_17.Enable = 'off';
+            app.Lamp_17.Position = [590 112 20 20];
+            app.Lamp_17.Color = [1 0 0];
+
+            % Create Lamp_18Label
+            app.Lamp_18Label = uilabel(app.Panel);
+            app.Lamp_18Label.HorizontalAlignment = 'right';
+            app.Lamp_18Label.FontWeight = 'bold';
+            app.Lamp_18Label.Enable = 'off';
+            app.Lamp_18Label.Position = [607 112 25 22];
+            app.Lamp_18Label.Text = '7';
+
+            % Create Lamp_18
+            app.Lamp_18 = uilamp(app.Panel);
+            app.Lamp_18.Enable = 'off';
+            app.Lamp_18.Position = [638 111 20 20];
+            app.Lamp_18.Color = [1 0 0];
+
+            % Create Lamp_19Label
+            app.Lamp_19Label = uilabel(app.Panel);
+            app.Lamp_19Label.HorizontalAlignment = 'right';
+            app.Lamp_19Label.FontWeight = 'bold';
+            app.Lamp_19Label.Enable = 'off';
+            app.Lamp_19Label.Position = [659 111 25 22];
+            app.Lamp_19Label.Text = '8';
+
+            % Create Lamp_19
+            app.Lamp_19 = uilamp(app.Panel);
+            app.Lamp_19.Enable = 'off';
+            app.Lamp_19.Position = [689 112 20 20];
+            app.Lamp_19.Color = [1 0 0];
+
+            % Create Lamp_14Label
+            app.Lamp_14Label = uilabel(app.Panel);
+            app.Lamp_14Label.HorizontalAlignment = 'right';
+            app.Lamp_14Label.FontWeight = 'bold';
+            app.Lamp_14Label.Enable = 'off';
+            app.Lamp_14Label.Position = [366 110 25 22];
+            app.Lamp_14Label.Text = '2';
+
+            % Create Lamp_14
+            app.Lamp_14 = uilamp(app.Panel);
+            app.Lamp_14.Enable = 'off';
+            app.Lamp_14.Position = [399 111 20 20];
+            app.Lamp_14.Color = [1 0 0];
+
+            % Create Lamp_13Label
+            app.Lamp_13Label = uilabel(app.Panel);
+            app.Lamp_13Label.HorizontalAlignment = 'right';
+            app.Lamp_13Label.FontWeight = 'bold';
+            app.Lamp_13Label.Enable = 'off';
+            app.Lamp_13Label.Position = [317 110 25 22];
+            app.Lamp_13Label.Text = '1';
+
+            % Create Lamp_13
+            app.Lamp_13 = uilamp(app.Panel);
+            app.Lamp_13.Enable = 'off';
+            app.Lamp_13.Position = [348 111 20 20];
+            app.Lamp_13.Color = [1 0 0];
+
+            % Create Lamp_20Label
+            app.Lamp_20Label = uilabel(app.Panel);
+            app.Lamp_20Label.HorizontalAlignment = 'right';
+            app.Lamp_20Label.FontWeight = 'bold';
+            app.Lamp_20Label.Enable = 'off';
+            app.Lamp_20Label.Position = [705 110 25 22];
+            app.Lamp_20Label.Text = '9';
+
+            % Create Lamp_20
+            app.Lamp_20 = uilamp(app.Panel);
+            app.Lamp_20.Enable = 'off';
+            app.Lamp_20.Position = [735 113 20 20];
+            app.Lamp_20.Color = [1 0 0];
+
+            % Create Label_27
+            app.Label_27 = uilabel(app.Panel);
+            app.Label_27.HorizontalAlignment = 'right';
+            app.Label_27.FontWeight = 'bold';
+            app.Label_27.Enable = 'off';
+            app.Label_27.Position = [756 110 25 22];
+            app.Label_27.Text = '10';
+
+            % Create Lamp_21
+            app.Lamp_21 = uilamp(app.Panel);
+            app.Lamp_21.Enable = 'off';
+            app.Lamp_21.Position = [787 111 20 20];
+            app.Lamp_21.Color = [1 0 0];
+
+            % Create Label_28
+            app.Label_28 = uilabel(app.Panel);
+            app.Label_28.HorizontalAlignment = 'right';
+            app.Label_28.FontWeight = 'bold';
+            app.Label_28.Enable = 'off';
+            app.Label_28.Position = [561 76 25 22];
+            app.Label_28.Text = '18';
+
+            % Create Lamp_22
+            app.Lamp_22 = uilamp(app.Panel);
+            app.Lamp_22.Enable = 'off';
+            app.Lamp_22.Position = [590 79 20 20];
+            app.Lamp_22.Color = [1 0 0];
+
+            % Create Label_32
+            app.Label_32 = uilabel(app.Panel);
+            app.Label_32.HorizontalAlignment = 'right';
+            app.Label_32.FontWeight = 'bold';
+            app.Label_32.Enable = 'off';
+            app.Label_32.Position = [803 109 25 22];
+            app.Label_32.Text = '11';
+
+            % Create Lamp_23
+            app.Lamp_23 = uilamp(app.Panel);
+            app.Lamp_23.Enable = 'off';
+            app.Lamp_23.Position = [836 110 20 20];
+            app.Lamp_23.Color = [1 0 0];
+
+            % Create Label_33
+            app.Label_33 = uilabel(app.Panel);
+            app.Label_33.HorizontalAlignment = 'right';
+            app.Label_33.FontWeight = 'bold';
+            app.Label_33.Enable = 'off';
+            app.Label_33.Position = [853 109 25 22];
+            app.Label_33.Text = '12';
+
+            % Create Lamp_24
+            app.Lamp_24 = uilamp(app.Panel);
+            app.Lamp_24.Enable = 'off';
+            app.Lamp_24.Position = [881 109 20 20];
+            app.Lamp_24.Color = [1 0 0];
+
+            % Create Label_34
+            app.Label_34 = uilabel(app.Panel);
+            app.Label_34.HorizontalAlignment = 'right';
+            app.Label_34.FontWeight = 'bold';
+            app.Label_34.Enable = 'off';
+            app.Label_34.Position = [318 78 25 22];
+            app.Label_34.Text = '13';
+
+            % Create Lamp_25
+            app.Lamp_25 = uilamp(app.Panel);
+            app.Lamp_25.Enable = 'off';
+            app.Lamp_25.Position = [348 79 20 20];
+            app.Lamp_25.Color = [1 0 0];
+
+            % Create Label_36
+            app.Label_36 = uilabel(app.Panel);
+            app.Label_36.HorizontalAlignment = 'right';
+            app.Label_36.FontWeight = 'bold';
+            app.Label_36.Enable = 'off';
+            app.Label_36.Position = [417 78 25 22];
+            app.Label_36.Text = '15';
+
+            % Create Lamp_27
+            app.Lamp_27 = uilamp(app.Panel);
+            app.Lamp_27.Enable = 'off';
+            app.Lamp_27.Position = [447 78 20 20];
+            app.Lamp_27.Color = [1 0 0];
+
+            % Create Label_37
+            app.Label_37 = uilabel(app.Panel);
+            app.Label_37.HorizontalAlignment = 'right';
+            app.Label_37.FontWeight = 'bold';
+            app.Label_37.Enable = 'off';
+            app.Label_37.Position = [462 79 25 22];
+            app.Label_37.Text = '16';
+
+            % Create Lamp_28
+            app.Lamp_28 = uilamp(app.Panel);
+            app.Lamp_28.Enable = 'off';
+            app.Lamp_28.Position = [493 78 20 20];
+            app.Lamp_28.Color = [1 0 0];
+
+            % Create Label_38
+            app.Label_38 = uilabel(app.Panel);
+            app.Label_38.HorizontalAlignment = 'right';
+            app.Label_38.FontWeight = 'bold';
+            app.Label_38.Enable = 'off';
+            app.Label_38.Position = [510 78 25 22];
+            app.Label_38.Text = '17';
+
+            % Create Lamp_29
+            app.Lamp_29 = uilamp(app.Panel);
+            app.Lamp_29.Enable = 'off';
+            app.Lamp_29.Position = [540 79 20 20];
+            app.Lamp_29.Color = [1 0 0];
+
+            % Create Label_35
+            app.Label_35 = uilabel(app.Panel);
+            app.Label_35.HorizontalAlignment = 'right';
+            app.Label_35.FontWeight = 'bold';
+            app.Label_35.Enable = 'off';
+            app.Label_35.Position = [366 78 25 22];
+            app.Label_35.Text = '14';
+
+            % Create Lamp_26
+            app.Lamp_26 = uilamp(app.Panel);
+            app.Lamp_26.Enable = 'off';
+            app.Lamp_26.Position = [399 79 20 20];
+            app.Lamp_26.Color = [1 0 0];
+
+            % Create Label_29
+            app.Label_29 = uilabel(app.Panel);
+            app.Label_29.HorizontalAlignment = 'right';
+            app.Label_29.FontWeight = 'bold';
+            app.Label_29.Enable = 'off';
+            app.Label_29.Position = [757 78 25 22];
+            app.Label_29.Text = '22';
+
+            % Create Lamp_30
+            app.Lamp_30 = uilamp(app.Panel);
+            app.Lamp_30.Enable = 'off';
+            app.Lamp_30.Position = [786 79 20 20];
+            app.Lamp_30.Color = [1 0 0];
+
+            % Create Lamp_35Label
+            app.Lamp_35Label = uilabel(app.Panel);
+            app.Lamp_35Label.HorizontalAlignment = 'right';
+            app.Lamp_35Label.FontWeight = 'bold';
+            app.Lamp_35Label.Enable = 'off';
+            app.Lamp_35Label.Position = [803 78 25 22];
+            app.Lamp_35Label.Text = '23';
+
+            % Create Lamp_35
+            app.Lamp_35 = uilamp(app.Panel);
+            app.Lamp_35.Enable = 'off';
+            app.Lamp_35.Position = [836 79 20 20];
+            app.Lamp_35.Color = [1 0 0];
+
+            % Create Lamp_34Label
+            app.Lamp_34Label = uilabel(app.Panel);
+            app.Lamp_34Label.HorizontalAlignment = 'right';
+            app.Lamp_34Label.FontWeight = 'bold';
+            app.Lamp_34Label.Enable = 'off';
+            app.Lamp_34Label.Position = [850 78 25 22];
+            app.Lamp_34Label.Text = '24';
+
+            % Create Lamp_34
+            app.Lamp_34 = uilamp(app.Panel);
+            app.Lamp_34.Enable = 'off';
+            app.Lamp_34.Position = [880 78 20 20];
+            app.Lamp_34.Color = [1 0 0];
+
+            % Create Lamp_32Label
+            app.Lamp_32Label = uilabel(app.Panel);
+            app.Lamp_32Label.HorizontalAlignment = 'right';
+            app.Lamp_32Label.FontWeight = 'bold';
+            app.Lamp_32Label.Enable = 'off';
+            app.Lamp_32Label.Position = [369 44 25 22];
+            app.Lamp_32Label.Text = '26';
+
+            % Create Lamp_32
+            app.Lamp_32 = uilamp(app.Panel);
+            app.Lamp_32.Enable = 'off';
+            app.Lamp_32.Position = [399 45 20 20];
+            app.Lamp_32.Color = [1 0 0];
+
+            % Create Lamp_31Label
+            app.Lamp_31Label = uilabel(app.Panel);
+            app.Lamp_31Label.HorizontalAlignment = 'right';
+            app.Lamp_31Label.FontWeight = 'bold';
+            app.Lamp_31Label.Enable = 'off';
+            app.Lamp_31Label.Position = [419 43 25 22];
+            app.Lamp_31Label.Text = '27';
+
+            % Create Lamp_31
+            app.Lamp_31 = uilamp(app.Panel);
+            app.Lamp_31.Enable = 'off';
+            app.Lamp_31.Position = [447 45 20 20];
+            app.Lamp_31.Color = [1 0 0];
+
+            % Create Lamp_36Label
+            app.Lamp_36Label = uilabel(app.Panel);
+            app.Lamp_36Label.HorizontalAlignment = 'right';
+            app.Lamp_36Label.FontWeight = 'bold';
+            app.Lamp_36Label.Enable = 'off';
+            app.Lamp_36Label.Position = [707 79 25 22];
+            app.Lamp_36Label.Text = '21';
+
+            % Create Lamp_36
+            app.Lamp_36 = uilamp(app.Panel);
+            app.Lamp_36.Enable = 'off';
+            app.Lamp_36.Position = [735 79 20 20];
+            app.Lamp_36.Color = [1 0 0];
+
+            % Create Lamp_37Label
+            app.Lamp_37Label = uilabel(app.Panel);
+            app.Lamp_37Label.HorizontalAlignment = 'right';
+            app.Lamp_37Label.FontWeight = 'bold';
+            app.Lamp_37Label.Enable = 'off';
+            app.Lamp_37Label.Position = [658 77 25 22];
+            app.Lamp_37Label.Text = '20';
+
+            % Create Lamp_37
+            app.Lamp_37 = uilamp(app.Panel);
+            app.Lamp_37.Enable = 'off';
+            app.Lamp_37.Position = [688 78 20 20];
+            app.Lamp_37.Color = [1 0 0];
+
+            % Create Lamp_38Label
+            app.Lamp_38Label = uilabel(app.Panel);
+            app.Lamp_38Label.HorizontalAlignment = 'right';
+            app.Lamp_38Label.FontWeight = 'bold';
+            app.Lamp_38Label.Enable = 'off';
+            app.Lamp_38Label.Position = [607 79 25 22];
+            app.Lamp_38Label.Text = '19';
+
+            % Create Lamp_38
+            app.Lamp_38 = uilamp(app.Panel);
+            app.Lamp_38.Enable = 'off';
+            app.Lamp_38.Position = [638 78 20 20];
+            app.Lamp_38.Color = [1 0 0];
+
+            % Create Lamp_33Label
+            app.Lamp_33Label = uilabel(app.Panel);
+            app.Lamp_33Label.HorizontalAlignment = 'right';
+            app.Lamp_33Label.FontWeight = 'bold';
+            app.Lamp_33Label.Enable = 'off';
+            app.Lamp_33Label.Position = [317 44 25 22];
+            app.Lamp_33Label.Text = '25';
+
+            % Create Lamp_33
+            app.Lamp_33 = uilamp(app.Panel);
+            app.Lamp_33.Enable = 'off';
+            app.Lamp_33.Position = [348 43 20 20];
+            app.Lamp_33.Color = [1 0 0];
+
+            % Create Label_30
+            app.Label_30 = uilabel(app.Panel);
+            app.Label_30.HorizontalAlignment = 'right';
+            app.Label_30.FontWeight = 'bold';
+            app.Label_30.Enable = 'off';
+            app.Label_30.Position = [608 44 25 22];
+            app.Label_30.Text = '31';
+
+            % Create Lamp_39
+            app.Lamp_39 = uilamp(app.Panel);
+            app.Lamp_39.Enable = 'off';
+            app.Lamp_39.Position = [638 45 20 20];
+            app.Lamp_39.Color = [1 0 0];
+
+            % Create Lamp_46Label
+            app.Lamp_46Label = uilabel(app.Panel);
+            app.Lamp_46Label.HorizontalAlignment = 'right';
+            app.Lamp_46Label.FontWeight = 'bold';
+            app.Lamp_46Label.Enable = 'off';
+            app.Lamp_46Label.Position = [507 44 25 22];
+            app.Lamp_46Label.Text = '29';
+
+            % Create Lamp_46
+            app.Lamp_46 = uilamp(app.Panel);
+            app.Lamp_46.Enable = 'off';
+            app.Lamp_46.Position = [540 45 20 20];
+            app.Lamp_46.Color = [1 0 0];
+
+            % Create Lamp_47Label
+            app.Lamp_47Label = uilabel(app.Panel);
+            app.Lamp_47Label.HorizontalAlignment = 'right';
+            app.Lamp_47Label.FontWeight = 'bold';
+            app.Lamp_47Label.Enable = 'off';
+            app.Lamp_47Label.Position = [462 44 25 22];
+            app.Lamp_47Label.Text = '28';
+
+            % Create Lamp_47
+            app.Lamp_47 = uilamp(app.Panel);
+            app.Lamp_47.Enable = 'off';
+            app.Lamp_47.Position = [493 45 20 20];
+            app.Lamp_47.Color = [1 0 0];
+
+            % Create Lamp_45Label
+            app.Lamp_45Label = uilabel(app.Panel);
+            app.Lamp_45Label.HorizontalAlignment = 'right';
+            app.Lamp_45Label.FontWeight = 'bold';
+            app.Lamp_45Label.Enable = 'off';
+            app.Lamp_45Label.Position = [562 44 25 22];
+            app.Lamp_45Label.Text = '30';
+
+            % Create Lamp_45
+            app.Lamp_45 = uilamp(app.Panel);
+            app.Lamp_45.Enable = 'off';
+            app.Lamp_45.Position = [590 45 20 20];
+            app.Lamp_45.Color = [1 0 0];
+
+            % Create Lamp_40Label
+            app.Lamp_40Label = uilabel(app.Panel);
+            app.Lamp_40Label.HorizontalAlignment = 'right';
+            app.Lamp_40Label.FontWeight = 'bold';
+            app.Lamp_40Label.Enable = 'off';
+            app.Lamp_40Label.Position = [852 43 25 22];
+            app.Lamp_40Label.Text = '36';
+
+            % Create Lamp_40
+            app.Lamp_40 = uilamp(app.Panel);
+            app.Lamp_40.Enable = 'off';
+            app.Lamp_40.Position = [880 45 20 20];
+            app.Lamp_40.Color = [1 0 0];
+
+            % Create Lamp_41Label
+            app.Lamp_41Label = uilabel(app.Panel);
+            app.Lamp_41Label.HorizontalAlignment = 'right';
+            app.Lamp_41Label.FontWeight = 'bold';
+            app.Lamp_41Label.Enable = 'off';
+            app.Lamp_41Label.Position = [807 44 25 22];
+            app.Lamp_41Label.Text = '35';
+
+            % Create Lamp_41
+            app.Lamp_41 = uilamp(app.Panel);
+            app.Lamp_41.Enable = 'off';
+            app.Lamp_41.Position = [837 45 20 20];
+            app.Lamp_41.Color = [1 0 0];
+
+            % Create Lamp_42Label
+            app.Lamp_42Label = uilabel(app.Panel);
+            app.Lamp_42Label.HorizontalAlignment = 'right';
+            app.Lamp_42Label.FontWeight = 'bold';
+            app.Lamp_42Label.Enable = 'off';
+            app.Lamp_42Label.Position = [756 45 25 22];
+            app.Lamp_42Label.Text = '34';
+
+            % Create Lamp_42
+            app.Lamp_42 = uilamp(app.Panel);
+            app.Lamp_42.Enable = 'off';
+            app.Lamp_42.Position = [787 44 20 20];
+            app.Lamp_42.Color = [1 0 0];
+
+            % Create Label_31
+            app.Label_31 = uilabel(app.Panel);
+            app.Label_31.HorizontalAlignment = 'right';
+            app.Label_31.FontWeight = 'bold';
+            app.Label_31.Enable = 'off';
+            app.Label_31.Position = [699 43 32 22];
+            app.Label_31.Text = '    33';
+
+            % Create Lamp_43
+            app.Lamp_43 = uilamp(app.Panel);
+            app.Lamp_43.Enable = 'off';
+            app.Lamp_43.Position = [735 45 20 20];
+            app.Lamp_43.Color = [1 0 0];
+
+            % Create Lamp_44Label
+            app.Lamp_44Label = uilabel(app.Panel);
+            app.Lamp_44Label.HorizontalAlignment = 'right';
+            app.Lamp_44Label.FontWeight = 'bold';
+            app.Lamp_44Label.Enable = 'off';
+            app.Lamp_44Label.Position = [655 43 25 22];
+            app.Lamp_44Label.Text = '32';
+
+            % Create Lamp_44
+            app.Lamp_44 = uilamp(app.Panel);
+            app.Lamp_44.Enable = 'off';
+            app.Lamp_44.Position = [688 44 20 20];
+            app.Lamp_44.Color = [1 0 0];
+
+            % Create Image2
+            app.Image2 = uiimage(app.Panel);
+            app.Image2.Position = [708 159 53 26];
+            app.Image2.ImageSource = 'tytytytyty.png';
+
+            % Create HstAvail_LEditFieldLabel
+            app.HstAvail_LEditFieldLabel = uilabel(app.Panel);
+            app.HstAvail_LEditFieldLabel.HorizontalAlignment = 'right';
+            app.HstAvail_LEditFieldLabel.FontWeight = 'bold';
+            app.HstAvail_LEditFieldLabel.FontAngle = 'italic';
+            app.HstAvail_LEditFieldLabel.FontColor = [1 1 1];
+            app.HstAvail_LEditFieldLabel.Position = [56 298 70 22];
+            app.HstAvail_LEditFieldLabel.Text = 'Hst Avail_L';
+
+            % Create HstAvail_LEditField
+            app.HstAvail_LEditField = uieditfield(app.Panel, 'numeric');
+            app.HstAvail_LEditField.FontWeight = 'bold';
+            app.HstAvail_LEditField.FontAngle = 'italic';
+            app.HstAvail_LEditField.FontColor = [1 1 1];
+            app.HstAvail_LEditField.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.HstAvail_LEditField.Position = [141 298 100 22];
+
+            % Create HstAvail_REditFieldLabel
+            app.HstAvail_REditFieldLabel = uilabel(app.Panel);
+            app.HstAvail_REditFieldLabel.HorizontalAlignment = 'right';
+            app.HstAvail_REditFieldLabel.FontWeight = 'bold';
+            app.HstAvail_REditFieldLabel.FontAngle = 'italic';
+            app.HstAvail_REditFieldLabel.FontColor = [1 1 1];
+            app.HstAvail_REditFieldLabel.Position = [54 276 72 22];
+            app.HstAvail_REditFieldLabel.Text = 'Hst Avail_R';
+
+            % Create HstAvail_REditField
+            app.HstAvail_REditField = uieditfield(app.Panel, 'numeric');
+            app.HstAvail_REditField.FontWeight = 'bold';
+            app.HstAvail_REditField.FontAngle = 'italic';
+            app.HstAvail_REditField.FontColor = [1 1 1];
+            app.HstAvail_REditField.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.HstAvail_REditField.Position = [141 276 100 22];
+
+            % Create KMOTEditFieldLabel
+            app.KMOTEditFieldLabel = uilabel(app.Panel);
+            app.KMOTEditFieldLabel.HorizontalAlignment = 'right';
+            app.KMOTEditFieldLabel.FontWeight = 'bold';
+            app.KMOTEditFieldLabel.FontAngle = 'italic';
+            app.KMOTEditFieldLabel.FontColor = [1 1 1];
+            app.KMOTEditFieldLabel.Position = [85 254 41 22];
+            app.KMOTEditFieldLabel.Text = 'KMOT';
+
+            % Create KMOTEditField
+            app.KMOTEditField = uieditfield(app.Panel, 'numeric');
+            app.KMOTEditField.FontWeight = 'bold';
+            app.KMOTEditField.FontAngle = 'italic';
+            app.KMOTEditField.FontColor = [1 1 1];
+            app.KMOTEditField.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.KMOTEditField.Position = [141 254 100 22];
+
+            % Create PBCStateLabel
+            app.PBCStateLabel = uilabel(app.Panel);
+            app.PBCStateLabel.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.PBCStateLabel.HorizontalAlignment = 'center';
+            app.PBCStateLabel.VerticalAlignment = 'bottom';
+            app.PBCStateLabel.FontSize = 30;
+            app.PBCStateLabel.FontWeight = 'bold';
+            app.PBCStateLabel.FontColor = [1 1 1];
+            app.PBCStateLabel.Position = [389 564 462 37];
+            app.PBCStateLabel.Text = 'PBC State: ';
+
+            % Create Switch_3
+            app.Switch_3 = uiswitch(app.Panel, 'toggle');
+            app.Switch_3.Items = {'Left/Right', ''};
+            app.Switch_3.Position = [826 220 41 92];
+            app.Switch_3.Value = 'Left/Right';
+
+            % Create PlotGraphLabel
+            app.PlotGraphLabel = uilabel(app.Panel);
+            app.PlotGraphLabel.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.PlotGraphLabel.HorizontalAlignment = 'center';
+            app.PlotGraphLabel.FontSize = 15;
+            app.PlotGraphLabel.FontWeight = 'bold';
+            app.PlotGraphLabel.Position = [797 298 101 22];
+            app.PlotGraphLabel.Text = 'Plot Graph';
+
+            % Create ResetButton
+            app.ResetButton = uibutton(app.Panel, 'push');
+            app.ResetButton.ButtonPushedFcn = createCallbackFcn(app, @ResetButtonPushed, true);
+            app.ResetButton.FontName = 'Copperplate Gothic Light';
+            app.ResetButton.FontSize = 13;
+            app.ResetButton.FontAngle = 'italic';
+            app.ResetButton.Position = [588 424 57 55];
+            app.ResetButton.Text = 'Reset';
+
+            % Create Switch_4
+            app.Switch_4 = uiswitch(app.Panel, 'rocker');
+            app.Switch_4.Items = {'Off', ''};
+            app.Switch_4.Position = [368 222 28 62];
+
+            % Create FaultsinjectionEditFieldLabel
+            app.FaultsinjectionEditFieldLabel = uilabel(app.Panel);
+            app.FaultsinjectionEditFieldLabel.HorizontalAlignment = 'right';
+            app.FaultsinjectionEditFieldLabel.FontSize = 13;
+            app.FaultsinjectionEditFieldLabel.FontWeight = 'bold';
+            app.FaultsinjectionEditFieldLabel.FontAngle = 'italic';
+            app.FaultsinjectionEditFieldLabel.FontColor = [1 1 1];
+            app.FaultsinjectionEditFieldLabel.Position = [941 226 100 22];
+            app.FaultsinjectionEditFieldLabel.Text = 'Faults injection';
+
+            % Create FaultsinjectionEditField
+            app.FaultsinjectionEditField = uieditfield(app.Panel, 'text');
+            app.FaultsinjectionEditField.ValueChangedFcn = createCallbackFcn(app, @FaultsinjectionEditFieldValueChanged, true);
+            app.FaultsinjectionEditField.FontSize = 13;
+            app.FaultsinjectionEditField.FontWeight = 'bold';
+            app.FaultsinjectionEditField.FontAngle = 'italic';
+            app.FaultsinjectionEditField.FontColor = [1 1 1];
+            app.FaultsinjectionEditField.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.FaultsinjectionEditField.Position = [1056 226 100 22];
+
+            % Create TestmodeLabel
+            app.TestmodeLabel = uilabel(app.Panel);
+            app.TestmodeLabel.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.TestmodeLabel.FontSize = 15;
+            app.TestmodeLabel.FontWeight = 'bold';
+            app.TestmodeLabel.Position = [342 298 79 22];
+            app.TestmodeLabel.Text = 'Test mode';
+
+            % Create RMOTEditFieldLabel
+            app.RMOTEditFieldLabel = uilabel(app.Panel);
+            app.RMOTEditFieldLabel.HorizontalAlignment = 'right';
+            app.RMOTEditFieldLabel.FontWeight = 'bold';
+            app.RMOTEditFieldLabel.FontAngle = 'italic';
+            app.RMOTEditFieldLabel.FontColor = [1 1 1];
+            app.RMOTEditFieldLabel.Position = [85 232 41 22];
+            app.RMOTEditFieldLabel.Text = 'RMOT';
+
+            % Create RMOTEditField
+            app.RMOTEditField = uieditfield(app.Panel, 'numeric');
+            app.RMOTEditField.FontWeight = 'bold';
+            app.RMOTEditField.FontAngle = 'italic';
+            app.RMOTEditField.FontColor = [1 1 1];
+            app.RMOTEditField.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.RMOTEditField.Position = [141 232 100 22];
+
+            % Create HPSDELAYEditFieldLabel
+            app.HPSDELAYEditFieldLabel = uilabel(app.Panel);
+            app.HPSDELAYEditFieldLabel.HorizontalAlignment = 'right';
+            app.HPSDELAYEditFieldLabel.FontWeight = 'bold';
+            app.HPSDELAYEditFieldLabel.FontAngle = 'italic';
+            app.HPSDELAYEditFieldLabel.FontColor = [1 1 1];
+            app.HPSDELAYEditFieldLabel.Position = [971 247 70 22];
+            app.HPSDELAYEditFieldLabel.Text = 'HPSDELAY';
+
+            % Create HPSDELAYEditField
+            app.HPSDELAYEditField = uieditfield(app.Panel, 'numeric');
+            app.HPSDELAYEditField.FontWeight = 'bold';
+            app.HPSDELAYEditField.FontAngle = 'italic';
+            app.HPSDELAYEditField.FontColor = [1 1 1];
+            app.HPSDELAYEditField.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.HPSDELAYEditField.Position = [1056 247 100 22];
+
+            % Create TemperatureEditFieldLabel
+            app.TemperatureEditFieldLabel = uilabel(app.Panel);
+            app.TemperatureEditFieldLabel.HorizontalAlignment = 'right';
+            app.TemperatureEditFieldLabel.FontWeight = 'bold';
+            app.TemperatureEditFieldLabel.FontAngle = 'italic';
+            app.TemperatureEditFieldLabel.FontColor = [1 1 1];
+            app.TemperatureEditFieldLabel.Position = [48 210 78 22];
+            app.TemperatureEditFieldLabel.Text = 'Temperature';
+
+            % Create TemperatureEditField
+            app.TemperatureEditField = uieditfield(app.Panel, 'numeric');
+            app.TemperatureEditField.FontWeight = 'bold';
+            app.TemperatureEditField.FontAngle = 'italic';
+            app.TemperatureEditField.FontColor = [1 1 1];
+            app.TemperatureEditField.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.TemperatureEditField.Position = [141 210 100 22];
+
+            % Create ReleaseLimitEditFieldLabel
+            app.ReleaseLimitEditFieldLabel = uilabel(app.Panel);
+            app.ReleaseLimitEditFieldLabel.HorizontalAlignment = 'right';
+            app.ReleaseLimitEditFieldLabel.FontWeight = 'bold';
+            app.ReleaseLimitEditFieldLabel.FontAngle = 'italic';
+            app.ReleaseLimitEditFieldLabel.FontColor = [1 1 1];
+            app.ReleaseLimitEditFieldLabel.Position = [962 205 79 22];
+            app.ReleaseLimitEditFieldLabel.Text = 'ReleaseLimit';
+
+            % Create ReleaseLimitEditField
+            app.ReleaseLimitEditField = uieditfield(app.Panel, 'numeric');
+            app.ReleaseLimitEditField.FontWeight = 'bold';
+            app.ReleaseLimitEditField.FontAngle = 'italic';
+            app.ReleaseLimitEditField.FontColor = [1 1 1];
+            app.ReleaseLimitEditField.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.ReleaseLimitEditField.Position = [1056 205 100 22];
+
+            % Create CurrTimeEditFieldLabel
+            app.CurrTimeEditFieldLabel = uilabel(app.Panel);
+            app.CurrTimeEditFieldLabel.BackgroundColor = [1 1 1];
+            app.CurrTimeEditFieldLabel.HorizontalAlignment = 'right';
+            app.CurrTimeEditFieldLabel.FontName = 'Verdana';
+            app.CurrTimeEditFieldLabel.Position = [1034 68 61 22];
+            app.CurrTimeEditFieldLabel.Text = 'CurrTime';
+
+            % Create CurrTimeEditField
+            app.CurrTimeEditField = uieditfield(app.Panel, 'numeric');
+            app.CurrTimeEditField.ValueChangedFcn = createCallbackFcn(app, @CurrTimeEditFieldValueChanged, true);
+            app.CurrTimeEditField.FontName = 'Verdana';
+            app.CurrTimeEditField.FontColor = [0.149 0.149 0.149];
+            app.CurrTimeEditField.Position = [1110 68 100 22];
+
+            % Create UButton
+            app.UButton = uibutton(app.Panel, 'push');
+            app.UButton.ButtonPushedFcn = createCallbackFcn(app, @UButtonPushed, true);
+            app.UButton.BackgroundColor = [0.9608 0.9608 0.9608];
+            app.UButton.FontName = 'Lucida Console';
+            app.UButton.FontSize = 16;
+            app.UButton.FontWeight = 'bold';
+            app.UButton.Position = [532 219 33 66];
+            app.UButton.Text = 'U';
+
+            % Create UpdateParamLabel
+            app.UpdateParamLabel = uilabel(app.Panel);
+            app.UpdateParamLabel.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.UpdateParamLabel.FontSize = 15;
+            app.UpdateParamLabel.FontWeight = 'bold';
+            app.UpdateParamLabel.Position = [498 297 106 23];
+            app.UpdateParamLabel.Text = 'Update Param';
+
+            % Create timeButton
+            app.timeButton = uibutton(app.Panel, 'push');
+            app.timeButton.ButtonPushedFcn = createCallbackFcn(app, @timeButtonPushed, true);
+            app.timeButton.BackgroundColor = [1 1 1];
+            app.timeButton.FontName = 'Verdana';
+            app.timeButton.Position = [1033 67 67 25];
+            app.timeButton.Text = 'time';
+
+            % Create FreeTravelLEditFieldLabel
+            app.FreeTravelLEditFieldLabel = uilabel(app.Panel);
+            app.FreeTravelLEditFieldLabel.HorizontalAlignment = 'right';
+            app.FreeTravelLEditFieldLabel.FontWeight = 'bold';
+            app.FreeTravelLEditFieldLabel.FontAngle = 'italic';
+            app.FreeTravelLEditFieldLabel.FontColor = [1 1 1];
+            app.FreeTravelLEditFieldLabel.Position = [52 188 74 22];
+            app.FreeTravelLEditFieldLabel.Text = 'FreeTravelL';
+
+            % Create FreeTravelLEditField
+            app.FreeTravelLEditField = uieditfield(app.Panel, 'numeric');
+            app.FreeTravelLEditField.FontWeight = 'bold';
+            app.FreeTravelLEditField.FontAngle = 'italic';
+            app.FreeTravelLEditField.FontColor = [1 1 1];
+            app.FreeTravelLEditField.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.FreeTravelLEditField.Position = [141 188 100 22];
+
+            % Create FreeTravelREditFieldLabel
+            app.FreeTravelREditFieldLabel = uilabel(app.Panel);
+            app.FreeTravelREditFieldLabel.HorizontalAlignment = 'right';
+            app.FreeTravelREditFieldLabel.FontWeight = 'bold';
+            app.FreeTravelREditFieldLabel.FontAngle = 'italic';
+            app.FreeTravelREditFieldLabel.FontColor = [1 1 1];
+            app.FreeTravelREditFieldLabel.Position = [966 183 75 22];
+            app.FreeTravelREditFieldLabel.Text = 'FreeTravelR';
+
+            % Create FreeTravelREditField
+            app.FreeTravelREditField = uieditfield(app.Panel, 'numeric');
+            app.FreeTravelREditField.FontWeight = 'bold';
+            app.FreeTravelREditField.FontAngle = 'italic';
+            app.FreeTravelREditField.FontColor = [1 1 1];
+            app.FreeTravelREditField.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.FreeTravelREditField.Position = [1056 183 100 22];
+
+            % Create SButton
+            app.SButton = uibutton(app.Panel, 'push');
+            app.SButton.ButtonPushedFcn = createCallbackFcn(app, @SButtonPushed, true);
+            app.SButton.FontSize = 15;
+            app.SButton.FontWeight = 'bold';
+            app.SButton.Position = [683 219 32 66];
+            app.SButton.Text = 'S';
+
+            % Create StopLabel
+            app.StopLabel = uilabel(app.Panel);
+            app.StopLabel.BackgroundColor = [0.3804 0.3686 0.3686];
+            app.StopLabel.HorizontalAlignment = 'center';
+            app.StopLabel.FontSize = 15;
+            app.StopLabel.FontWeight = 'bold';
+            app.StopLabel.Position = [656 297 84 24];
+            app.StopLabel.Text = 'Stop';
+
+            % Create UIAxes
+            app.UIAxes = uiaxes(app.Panel);
+            xlabel(app.UIAxes, 'Time(s)')
+            ylabel(app.UIAxes, 'CurrIn & Vin intensity')
+            zlabel(app.UIAxes, 'Z')
+            app.UIAxes.PlotBoxAspectRatio = [1.91558441558442 1 1];
+            app.UIAxes.FontWeight = 'bold';
+            app.UIAxes.XLim = [0 40];
+            app.UIAxes.YLim = [-24 24];
+            app.UIAxes.Colormap = [0.2431 0.149 0.6588;0.2431 0.1529 0.6745;0.2471 0.1569 0.6863;0.2471 0.1608 0.698;0.251 0.1647 0.7059;0.251 0.1686 0.7176;0.2549 0.1725 0.7294;0.2549 0.1765 0.7412;0.2588 0.1804 0.749;0.2588 0.1843 0.7608;0.0588 1 1;0.2627 0.1922 0.7843;0.2627 0.1961 0.7922;0.2667 0.2 0.8039;0.2667 0.2039 0.8157;0.2706 0.2078 0.8235;0.2706 0.2157 0.8353;0.2706 0.2196 0.8431;0.2745 0.2235 0.851;0.2745 0.2275 0.8627;0.2745 0.2314 0.8706;0.2745 0.2392 0.8784;0.2784 0.2431 0.8824;0.2784 0.2471 0.8902;0.2784 0.2549 0.898;0.2784 0.2588 0.902;0.2784 0.2667 0.9098;0.2784 0.2706 0.9137;0.2784 0.2745 0.9216;0.2824 0.2824 0.9255;0.2824 0.2863 0.9294;0.2824 0.2941 0.9333;0.2824 0.298 0.9412;0.2824 0.3059 0.9451;0.2824 0.3098 0.949;0.2824 0.3137 0.9529;0.2824 0.3216 0.9569;0.2824 0.3255 0.9608;0.2824 0.3294 0.9647;0.2784 0.3373 0.9686;0.2784 0.3412 0.9686;0.2784 0.349 0.9725;0.2784 0.3529 0.9765;0.2784 0.3569 0.9804;0.2784 0.3647 0.9804;0.2745 0.3686 0.9843;0.2745 0.3765 0.9843;0.2745 0.3804 0.9882;0.2706 0.3843 0.9882;0.2706 0.3922 0.9922;0.2667 0.3961 0.9922;0.2627 0.4039 0.9922;0.2627 0.4078 0.9961;0.2588 0.4157 0.9961;0.2549 0.4196 0.9961;0.251 0.4275 0.9961;0.2471 0.4314 1;0.2431 0.4392 1;0.2353 0.4431 1;0.2314 0.451 1;0.2235 0.4549 1;0.2196 0.4627 0.9961;0.2118 0.4667 0.9961;0.2078 0.4745 0.9922;0.2 0.4784 0.9922;0.1961 0.4863 0.9882;0.1922 0.4902 0.9882;0.1882 0.498 0.9843;0.1843 0.502 0.9804;0.1843 0.5098 0.9804;0.1804 0.5137 0.9765;0.1804 0.5176 0.9725;0.1804 0.5255 0.9725;0.1804 0.5294 0.9686;0.1765 0.5333 0.9647;0.1765 0.5412 0.9608;0.1765 0.5451 0.9569;0.1765 0.549 0.9529;0.1765 0.5569 0.949;0.1725 0.5608 0.9451;0.1725 0.5647 0.9412;0.1686 0.5686 0.9373;0.1647 0.5765 0.9333;0.1608 0.5804 0.9294;0.1569 0.5843 0.9255;0.1529 0.5922 0.9216;0.1529 0.5961 0.9176;0.149 0.6 0.9137;0.149 0.6039 0.9098;0.1451 0.6078 0.9098;0.1451 0.6118 0.9059;0.1412 0.6196 0.902;0.1412 0.6235 0.898;0.1373 0.6275 0.898;0.1373 0.6314 0.8941;0.1333 0.6353 0.8941;0.1294 0.6392 0.8902;0.1255 0.6471 0.8902;0.1216 0.651 0.8863;0.1176 0.6549 0.8824;0.1137 0.6588 0.8824;0.1137 0.6627 0.8784;0.1098 0.6667 0.8745;0.1059 0.6706 0.8706;0.102 0.6745 0.8667;0.098 0.6784 0.8627;0.0902 0.6824 0.8549;0.0863 0.6863 0.851;0.0784 0.6902 0.8471;0.0706 0.6941 0.8392;0.0627 0.698 0.8353;0.0549 0.702 0.8314;0.0431 0.702 0.8235;0.0314 0.7059 0.8196;0.0235 0.7098 0.8118;0.0157 0.7137 0.8078;0.0078 0.7176 0.8;0.0039 0.7176 0.7922;0 0.7216 0.7882;0 0.7255 0.7804;0 0.7294 0.7765;0.0039 0.7294 0.7686;0.0078 0.7333 0.7608;0.0157 0.7333 0.7569;0.0235 0.7373 0.749;0.0353 0.7412 0.7412;0.051 0.7412 0.7373;0.0627 0.7451 0.7294;0.0784 0.7451 0.7216;0.0902 0.749 0.7137;0.102 0.7529 0.7098;0.1137 0.7529 0.702;0.1255 0.7569 0.6941;0.1373 0.7569 0.6863;0.1451 0.7608 0.6824;0.1529 0.7608 0.6745;0.1608 0.7647 0.6667;0.1686 0.7647 0.6588;0.1725 0.7686 0.651;0.1804 0.7686 0.6471;0.1843 0.7725 0.6392;0.1922 0.7725 0.6314;0.1961 0.7765 0.6235;0.2 0.7804 0.6157;0.2078 0.7804 0.6078;0.2118 0.7843 0.6;0.2196 0.7843 0.5882;0.2235 0.7882 0.5804;0.2314 0.7882 0.5725;0.2392 0.7922 0.5647;0.251 0.7922 0.5529;0.2588 0.7922 0.5451;0.2706 0.7961 0.5373;0.2824 0.7961 0.5255;0.2941 0.7961 0.5176;0.3059 0.8 0.5059;0.3176 0.8 0.498;0.3294 0.8 0.4863;0.3412 0.8 0.4784;0.3529 0.8 0.4667;0.3686 0.8039 0.4549;0.3804 0.8039 0.4471;0.3922 0.8039 0.4353;0.4039 0.8039 0.4235;0.4196 0.8039 0.4118;0.4314 0.8039 0.4;0.4471 0.8039 0.3922;0.4627 0.8 0.3804;0.4745 0.8 0.3686;0.4902 0.8 0.3569;0.5059 0.8 0.349;0.5176 0.8 0.3373;0.5333 0.7961 0.3255;0.5451 0.7961 0.3176;0.5608 0.7961 0.3059;0.5765 0.7922 0.2941;0.5882 0.7922 0.2824;0.6039 0.7882 0.2745;0.6157 0.7882 0.2627;0.6314 0.7843 0.251;0.6431 0.7843 0.2431;0.6549 0.7804 0.2314;0.6706 0.7804 0.2235;0.6824 0.7765 0.2157;0.698 0.7765 0.2078;0.7098 0.7725 0.2;0.7216 0.7686 0.1922;0.7333 0.7686 0.1843;0.7451 0.7647 0.1765;0.7608 0.7647 0.1725;0.7725 0.7608 0.1647;0.7843 0.7569 0.1608;0.7961 0.7569 0.1569;0.8078 0.7529 0.1529;0.8157 0.749 0.1529;0.8275 0.749 0.1529;0.8392 0.7451 0.1529;0.851 0.7451 0.1569;0.8588 0.7412 0.1569;0.8706 0.7373 0.1608;0.8824 0.7373 0.1647;0.8902 0.7373 0.1686;0.902 0.7333 0.1765;0.9098 0.7333 0.1804;0.9176 0.7294 0.1882;0.9255 0.7294 0.1961;0.9373 0.7294 0.2078;0.9451 0.7294 0.2157;0.9529 0.7294 0.2235;0.9608 0.7294 0.2314;0.9686 0.7294 0.2392;0.9765 0.7294 0.2431;0.9843 0.7333 0.2431;0.9882 0.7373 0.2431;0.9961 0.7412 0.2392;0.9961 0.7451 0.2353;0.9961 0.7529 0.2314;0.9961 0.7569 0.2275;0.9961 0.7608 0.2235;0.9961 0.7686 0.2196;0.9961 0.7725 0.2157;0.9961 0.7804 0.2078;0.9961 0.7843 0.2039;0.9961 0.7922 0.2;0.9922 0.7961 0.1961;0.9922 0.8039 0.1922;0.9922 0.8078 0.1922;0.9882 0.8157 0.1882;0.9843 0.8235 0.1843;0.9843 0.8275 0.1804;0.9804 0.8353 0.1804;0.9765 0.8392 0.1765;0.9765 0.8471 0.1725;0.9725 0.851 0.1686;0.9686 0.8588 0.1647;0.9686 0.8667 0.1647;0.9647 0.8706 0.1608;0.9647 0.8784 0.1569;0.9608 0.8824 0.1569;0.9608 0.8902 0.1529;0.9608 0.898 0.149;0.9608 0.902 0.149;0.9608 0.9098 0.1451;0.9608 0.9137 0.1412;0.9608 0.9216 0.1373;0.9608 0.9255 0.1333;0.9608 0.9333 0.1294;0.9647 0.9373 0.1255;0.9647 0.9451 0.1216;0.9647 0.949 0.1176;0.9686 0.9569 0.1098;0.9686 0.9608 0.1059;0.9725 0.9686 0.102;0.9725 0.9725 0.0941;0.9765 0.9765 0.0863;0.9765 0.9843 0.0824;1 1 1;1 1 1;1 1 1];
+            app.UIAxes.XColor = [1 1 1];
+            app.UIAxes.YColor = [1 1 1];
+            app.UIAxes.YTick = [-24 -7 7 24];
+            app.UIAxes.Color = [0.3804 0.3686 0.3686];
+            app.UIAxes.XGrid = 'on';
+            app.UIAxes.YGrid = 'on';
+            app.UIAxes.FontSize = 12;
+            app.UIAxes.GridColor = [1 1 1];
+            app.UIAxes.MinorGridColor = [1 1 1];
+            app.UIAxes.ButtonDownFcn = createCallbackFcn(app, @UIAxesButtonDown, true);
+            app.UIAxes.Position = [35 391 288 210];
+
+            % Create UIAxes2
+            app.UIAxes2 = uiaxes(app.Panel);
+            xlabel(app.UIAxes2, 'Time(s)')
+            ylabel(app.UIAxes2, 'Clamping Force(KN) Curve')
+            zlabel(app.UIAxes2, 'Z')
+            app.UIAxes2.AmbientLightColor = [0.5216 0.6 0.549];
+            app.UIAxes2.FontWeight = 'bold';
+            app.UIAxes2.YLim = [0 25000];
+            app.UIAxes2.Colormap = [0.2431 0.149 0.6588;0.2431 0.1529 0.6745;0.2471 0.1569 0.6863;0.2471 0.1608 0.698;0.251 0.1647 0.7059;0.251 0.1686 0.7176;0.2549 0.1725 0.7294;0.2549 0.1765 0.7412;0.2588 0.1804 0.749;0.2588 0.1843 0.7608;0.0588 1 1;0.2627 0.1922 0.7843;0.2627 0.1961 0.7922;0.2667 0.2 0.8039;0.2667 0.2039 0.8157;0.2706 0.2078 0.8235;0.2706 0.2157 0.8353;0.2706 0.2196 0.8431;0.2745 0.2235 0.851;0.2745 0.2275 0.8627;0.2745 0.2314 0.8706;0.2745 0.2392 0.8784;0.2784 0.2431 0.8824;0.2784 0.2471 0.8902;0.2784 0.2549 0.898;0.2784 0.2588 0.902;0.2784 0.2667 0.9098;0.2784 0.2706 0.9137;0.2784 0.2745 0.9216;0.2824 0.2824 0.9255;0.2824 0.2863 0.9294;0.2824 0.2941 0.9333;0.2824 0.298 0.9412;0.2824 0.3059 0.9451;0.2824 0.3098 0.949;0.2824 0.3137 0.9529;0.2824 0.3216 0.9569;0.2824 0.3255 0.9608;0.2824 0.3294 0.9647;0.2784 0.3373 0.9686;0.2784 0.3412 0.9686;0.2784 0.349 0.9725;0.2784 0.3529 0.9765;0.2784 0.3569 0.9804;0.2784 0.3647 0.9804;0.2745 0.3686 0.9843;0.2745 0.3765 0.9843;0.2745 0.3804 0.9882;0.2706 0.3843 0.9882;0.2706 0.3922 0.9922;0.2667 0.3961 0.9922;0.2627 0.4039 0.9922;0.2627 0.4078 0.9961;0.2588 0.4157 0.9961;0.2549 0.4196 0.9961;0.251 0.4275 0.9961;0.2471 0.4314 1;0.2431 0.4392 1;0.2353 0.4431 1;0.2314 0.451 1;0.2235 0.4549 1;0.2196 0.4627 0.9961;0.2118 0.4667 0.9961;0.2078 0.4745 0.9922;0.2 0.4784 0.9922;0.1961 0.4863 0.9882;0.1922 0.4902 0.9882;0.1882 0.498 0.9843;0.1843 0.502 0.9804;0.1843 0.5098 0.9804;0.1804 0.5137 0.9765;0.1804 0.5176 0.9725;0.1804 0.5255 0.9725;0.1804 0.5294 0.9686;0.1765 0.5333 0.9647;0.1765 0.5412 0.9608;0.1765 0.5451 0.9569;0.1765 0.549 0.9529;0.1765 0.5569 0.949;0.1725 0.5608 0.9451;0.1725 0.5647 0.9412;0.1686 0.5686 0.9373;0.1647 0.5765 0.9333;0.1608 0.5804 0.9294;0.1569 0.5843 0.9255;0.1529 0.5922 0.9216;0.1529 0.5961 0.9176;0.149 0.6 0.9137;0.149 0.6039 0.9098;0.1451 0.6078 0.9098;0.1451 0.6118 0.9059;0.1412 0.6196 0.902;0.1412 0.6235 0.898;0.1373 0.6275 0.898;0.1373 0.6314 0.8941;0.1333 0.6353 0.8941;0.1294 0.6392 0.8902;0.1255 0.6471 0.8902;0.1216 0.651 0.8863;0.1176 0.6549 0.8824;0.1137 0.6588 0.8824;0.1137 0.6627 0.8784;0.1098 0.6667 0.8745;0.1059 0.6706 0.8706;0.102 0.6745 0.8667;0.098 0.6784 0.8627;0.0902 0.6824 0.8549;0.0863 0.6863 0.851;0.0784 0.6902 0.8471;0.0706 0.6941 0.8392;0.0627 0.698 0.8353;0.0549 0.702 0.8314;0.0431 0.702 0.8235;0.0314 0.7059 0.8196;0.0235 0.7098 0.8118;0.0157 0.7137 0.8078;0.0078 0.7176 0.8;0.0039 0.7176 0.7922;0 0.7216 0.7882;0 0.7255 0.7804;0 0.7294 0.7765;0.0039 0.7294 0.7686;0.0078 0.7333 0.7608;0.0157 0.7333 0.7569;0.0235 0.7373 0.749;0.0353 0.7412 0.7412;0.051 0.7412 0.7373;0.0627 0.7451 0.7294;0.0784 0.7451 0.7216;0.0902 0.749 0.7137;0.102 0.7529 0.7098;0.1137 0.7529 0.702;0.1255 0.7569 0.6941;0.1373 0.7569 0.6863;0.1451 0.7608 0.6824;0.1529 0.7608 0.6745;0.1608 0.7647 0.6667;0.1686 0.7647 0.6588;0.1725 0.7686 0.651;0.1804 0.7686 0.6471;0.1843 0.7725 0.6392;0.1922 0.7725 0.6314;0.1961 0.7765 0.6235;0.2 0.7804 0.6157;0.2078 0.7804 0.6078;0.2118 0.7843 0.6;0.2196 0.7843 0.5882;0.2235 0.7882 0.5804;0.2314 0.7882 0.5725;0.2392 0.7922 0.5647;0.251 0.7922 0.5529;0.2588 0.7922 0.5451;0.2706 0.7961 0.5373;0.2824 0.7961 0.5255;0.2941 0.7961 0.5176;0.3059 0.8 0.5059;0.3176 0.8 0.498;0.3294 0.8 0.4863;0.3412 0.8 0.4784;0.3529 0.8 0.4667;0.3686 0.8039 0.4549;0.3804 0.8039 0.4471;0.3922 0.8039 0.4353;0.4039 0.8039 0.4235;0.4196 0.8039 0.4118;0.4314 0.8039 0.4;0.4471 0.8039 0.3922;0.4627 0.8 0.3804;0.4745 0.8 0.3686;0.4902 0.8 0.3569;0.5059 0.8 0.349;0.5176 0.8 0.3373;0.5333 0.7961 0.3255;0.5451 0.7961 0.3176;0.5608 0.7961 0.3059;0.5765 0.7922 0.2941;0.5882 0.7922 0.2824;0.6039 0.7882 0.2745;0.6157 0.7882 0.2627;0.6314 0.7843 0.251;0.6431 0.7843 0.2431;0.6549 0.7804 0.2314;0.6706 0.7804 0.2235;0.6824 0.7765 0.2157;0.698 0.7765 0.2078;0.7098 0.7725 0.2;0.7216 0.7686 0.1922;0.7333 0.7686 0.1843;0.7451 0.7647 0.1765;0.7608 0.7647 0.1725;0.7725 0.7608 0.1647;0.7843 0.7569 0.1608;0.7961 0.7569 0.1569;0.8078 0.7529 0.1529;0.8157 0.749 0.1529;0.8275 0.749 0.1529;0.8392 0.7451 0.1529;0.851 0.7451 0.1569;0.8588 0.7412 0.1569;0.8706 0.7373 0.1608;0.8824 0.7373 0.1647;0.8902 0.7373 0.1686;0.902 0.7333 0.1765;0.9098 0.7333 0.1804;0.9176 0.7294 0.1882;0.9255 0.7294 0.1961;0.9373 0.7294 0.2078;0.9451 0.7294 0.2157;0.9529 0.7294 0.2235;0.9608 0.7294 0.2314;0.9686 0.7294 0.2392;0.9765 0.7294 0.2431;0.9843 0.7333 0.2431;0.9882 0.7373 0.2431;0.9961 0.7412 0.2392;0.9961 0.7451 0.2353;0.9961 0.7529 0.2314;0.9961 0.7569 0.2275;0.9961 0.7608 0.2235;0.9961 0.7686 0.2196;0.9961 0.7725 0.2157;0.9961 0.7804 0.2078;0.9961 0.7843 0.2039;0.9961 0.7922 0.2;0.9922 0.7961 0.1961;0.9922 0.8039 0.1922;0.9922 0.8078 0.1922;0.9882 0.8157 0.1882;0.9843 0.8235 0.1843;0.9843 0.8275 0.1804;0.9804 0.8353 0.1804;0.9765 0.8392 0.1765;0.9765 0.8471 0.1725;0.9725 0.851 0.1686;0.9686 0.8588 0.1647;0.9686 0.8667 0.1647;0.9647 0.8706 0.1608;0.9647 0.8784 0.1569;0.9608 0.8824 0.1569;0.9608 0.8902 0.1529;0.9608 0.898 0.149;0.9608 0.902 0.149;0.9608 0.9098 0.1451;0.9608 0.9137 0.1412;0.9608 0.9216 0.1373;0.9608 0.9255 0.1333;0.9608 0.9333 0.1294;0.9647 0.9373 0.1255;0.9647 0.9451 0.1216;0.9647 0.949 0.1176;0.9686 0.9569 0.1098;0.9686 0.9608 0.1059;0.9725 0.9686 0.102;0.9725 0.9725 0.0941;0.9765 0.9765 0.0863;0.9765 0.9843 0.0824;1 1 1;1 1 1;1 1 1];
+            app.UIAxes2.XColor = [1 1 1];
+            app.UIAxes2.YColor = [1 1 1];
+            app.UIAxes2.YTick = [8300 16000 25000];
+            app.UIAxes2.Color = [0.3804 0.3686 0.3686];
+            app.UIAxes2.XGrid = 'on';
+            app.UIAxes2.YGrid = 'on';
+            app.UIAxes2.Position = [901 392 313 188];
+
+            % Show the figure after all components are created
+            app.UIFigure.Visible = 'on';
+        end
+    end
+
+    % App creation and deletion
+    methods (Access = public)
+
+        % Construct app
+        function app = HMI
+
+            % Create UIFigure and components
+            createComponents(app)
+
+            % Register the app with App Designer
+            registerApp(app, app.UIFigure)
+
+            % Execute the startup function
+            runStartupFcn(app, @startupFcn)
+
+            if nargout == 0
+                clear app
+            end
+        end
+
+        % Code that executes before app deletion
+        function delete(app)
+
+            % Delete UIFigure when app is deleted
+            delete(app.UIFigure)
+        end
+    end
+end
